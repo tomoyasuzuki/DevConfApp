@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class Posts: Codable {
+final class Post: Codable {
     let author: User
     let description: String
     let createdAt: Date
