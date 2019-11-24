@@ -19,6 +19,10 @@
 		57AB2F04238AABD60021C67B /* Thread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2F03238AABD60021C67B /* Thread.swift */; };
 		57AB2F06238AABED0021C67B /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2F05238AABED0021C67B /* Post.swift */; };
 		57AB2F0A238AAEBB0021C67B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2F09238AAEBB0021C67B /* HomeViewController.swift */; };
+		57AB2F0D238AB37F0021C67B /* ThreadThinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2F0C238AB37F0021C67B /* ThreadThinTableViewCell.swift */; };
+		57AB2F10238AB5500021C67B /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2F0F238AB5500021C67B /* PaddingLabel.swift */; };
+		57AB2F12238AB55A0021C67B /* SubTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2F11238AB55A0021C67B /* SubTitleLabel.swift */; };
+		57AB2F14238AB6160021C67B /* RadiusLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2F13238AB6160021C67B /* RadiusLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,10 @@
 		57AB2F03238AABD60021C67B /* Thread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thread.swift; sourceTree = "<group>"; };
 		57AB2F05238AABED0021C67B /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		57AB2F09238AAEBB0021C67B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		57AB2F0C238AB37F0021C67B /* ThreadThinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadThinTableViewCell.swift; sourceTree = "<group>"; };
+		57AB2F0F238AB5500021C67B /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		57AB2F11238AB55A0021C67B /* SubTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTitleLabel.swift; sourceTree = "<group>"; };
+		57AB2F13238AB6160021C67B /* RadiusLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +117,7 @@
 			children = (
 				57AB2F07238AAE810021C67B /* Entity */,
 				57AB2F08238AAE9D0021C67B /* View */,
+				57AB2F0B238AB3430021C67B /* Components */,
 				57AB2ED1238AAB5C0021C67B /* AppDelegate.swift */,
 				57AB2ED3238AAB5C0021C67B /* SceneDelegate.swift */,
 				57AB2ED5238AAB5C0021C67B /* ViewController.swift */,
@@ -154,6 +163,25 @@
 				57AB2F09238AAEBB0021C67B /* HomeViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		57AB2F0B238AB3430021C67B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				57AB2F0E238AB3E50021C67B /* Common */,
+				57AB2F0C238AB37F0021C67B /* ThreadThinTableViewCell.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		57AB2F0E238AB3E50021C67B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				57AB2F0F238AB5500021C67B /* PaddingLabel.swift */,
+				57AB2F11238AB55A0021C67B /* SubTitleLabel.swift */,
+				57AB2F13238AB6160021C67B /* RadiusLabel.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,10 +317,14 @@
 			files = (
 				57AB2ED6238AAB5C0021C67B /* ViewController.swift in Sources */,
 				57AB2F04238AABD60021C67B /* Thread.swift in Sources */,
+				57AB2F12238AB55A0021C67B /* SubTitleLabel.swift in Sources */,
 				57AB2ED2238AAB5C0021C67B /* AppDelegate.swift in Sources */,
 				57AB2F06238AABED0021C67B /* Post.swift in Sources */,
 				57AB2ED4238AAB5C0021C67B /* SceneDelegate.swift in Sources */,
 				57AB2F0A238AAEBB0021C67B /* HomeViewController.swift in Sources */,
+				57AB2F10238AB5500021C67B /* PaddingLabel.swift in Sources */,
+				57AB2F14238AB6160021C67B /* RadiusLabel.swift in Sources */,
+				57AB2F0D238AB37F0021C67B /* ThreadThinTableViewCell.swift in Sources */,
 				57AB2F02238AABC50021C67B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
