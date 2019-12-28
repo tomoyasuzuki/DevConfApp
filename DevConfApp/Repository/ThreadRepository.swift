@@ -22,15 +22,13 @@ final class ThreadRepository: ThreadRepositoryProtocol {
     private let db = Firestore.firestore()
     
     func fetchThread(id: String) -> Observable<ThreadModel> {
-        return self.db
-            .collection("thread")
-            .document(id)
-            .rx.getDocument()
-            .compactMap { ThreadModel(data: $0.data())}
+        let doc = self.db.collection("thread").document(id)
+        
+        return doc.rx.getDocument()
+            .compactMap { ThreadModel(data: $0.data()) }
     }
     
     func observeTherad(userId: String) -> Observable<ThreadModel> {
-        
         let userRef = self.db.collection("user").document(userId)
         
         return self.db
@@ -49,5 +47,22 @@ final class ThreadRepository: ThreadRepositoryProtocol {
                 
                 return thread
         }
+    }
+    
+    func addThread(thread: ThreadModel) {
+        var data: [String: Any] = [:]
+        
+        data["title"] = thread.title
+        data["threadId"] = thread.threadId
+        
+        let createdAt = Date().description
+        data["createdAt"] = createdAt
+        
+        let updatedAt = Date().description
+        data["updatedAt"] = updatedAt
+        
+        data["isActive"] = thread.isActive
+        
+        self.db.collection("thread").addDocument(data: data)
     }
 }

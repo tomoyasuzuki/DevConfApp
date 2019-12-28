@@ -65,9 +65,10 @@ final class ThreadThinTableViewCell: EllipseTableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureDataSouce(source: Thread) {
+    func configureDataSouce(source: ThreadModel) {
         // TODO: データ反映全般の処理
-        
+        self.titleLabel.text = source.title
+        self.commentCountLabel.text = source.posts.count.description
         
         setNeedsLayout()
     }

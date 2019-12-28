@@ -28,6 +28,27 @@ final class PostRepository: PostRepositoryProtocol {
             .compactMap { PostModel(data: $0.data())}
     }
     
+    func fetchPostByTheradRef(threadRef: DocumentReference) -> Observable<PostModel> {
+        return Observable.create { observer in
+            let disposables = Disposables.create()
+            
+            self.db.collection("post")
+                .whereField("threadRef", isEqualTo: threadRef)
+                .getDocuments() { snp, error in
+                    if let snp = snp {
+                        snp.documentChanges.forEach { doc in
+                            let data = doc.document.data()
+                            if let post = PostModel(data: data) {
+                                observer.onNext(post)
+                            }
+                        }
+                    }
+            }
+            
+            return disposables
+        }
+    }
+    
     func observePost(threadId: String) -> Observable<PostModel> {
         let threadRef = self.db.collection("thread").document(threadId)
         

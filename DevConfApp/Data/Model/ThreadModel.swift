@@ -8,64 +8,64 @@
 //
 
 import Foundation
-
-enum ThreadStatus {
-    case active
-    case stopped
-}
+import FirebaseFirestore
 
 final class ThreadModel {
-    let title: String
     let threadId: String
+    let title: String
     let createdAt: String
     let updatedAt: String
-    let tags: [String]?
-    let status: ThreadStatus
-    var clippingUsers: [UserModel]?
-    var clippingUserCount: Int
-    var posts: [PostModel]?
-    var postCount: Int
+    let tags: [String]
+    let isActive: Bool
+    var clippingUsers: [UserModel]
+    var posts: [PostModel]
 
-    init(title: String, threadId: String, createdAt: String, updatedAt: String, tags: [String], status: ThreadStatus, clippingUsers: [UserModel],clippingUsreCount: Int, posts: [PostModel], postCount: Int){
-        self.title = title
+    init(threadId: String, title: String, createdAt: String, updatedAt: String, tags: [String] = [], isActive: Bool, clippingUsers: [UserModel] = [], posts: [PostModel] = []) {
         self.threadId = threadId
+        self.title = title
         self.createdAt = createdAt
         self.updatedAt = updatedAt
         self.tags = tags
-        self.status = status
+        self.isActive = isActive
         self.clippingUsers = clippingUsers
-        self.clippingUserCount = clippingUsreCount
         self.posts = posts
-        self.postCount = postCount
     }
     
     
     init?(data: [String: Any]?) {
         guard let data = data,
-            let title = data["title"] as? String,
             let threadId = data["threadId"] as? String,
+            let title = data["title"] as? String,
             let createdAt = data["createdAt"] as? String,
             let updatedAt = data["updatedAt"] as? String,
-            let status = data["status"] as? String,
-            let clippingUserCount = data["clippingUserCount"] as? Int,
-            let postCount = data["postCount"] as? Int else { return nil}
+            let isActive = data["isActive"] as? Bool,
+            let tags = data["tags"] as? [String] else
+        {
+                return nil
+                
+        }
         
-        self.title = title
         self.threadId = threadId
+        self.title = title
         self.createdAt = createdAt
         self.updatedAt = updatedAt
-        self.clippingUserCount = clippingUserCount
-        self.postCount = postCount
+        self.tags = tags
+        self.isActive = isActive
         
-        // これらはthreadIdを元に再度fetchする必要がある
-        self.clippingUsers = nil
-        self.posts = nil
-        self.tags = nil
+        self.posts = []
+        self.clippingUsers = []
         
-        if status == "active" {
-            self.status = .active
-        } else {
-            self.status = .stopped
-        }
+    }
+    
+    func convertToDictionary() -> [String: Any] {
+        let data: [String: Any] = ["title": self.title,
+                                   "createdAt": self.createdAt,
+                                   "updatedAt": self.updatedAt,
+                                   "tags": self.tags,
+                                   "isActive": self.isActive,
+                                   "clippingUsers": self.clippingUsers,
+                                   "posts": self.posts]
+        
+        return data
     }
 }

@@ -7,7 +7,10 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 import SnapKit
+import Swinject
 
 final class HomeViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -19,17 +22,39 @@ final class HomeViewController: UIViewController {
         return tb
     }()
     
+    var addThreadButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 30
+        button.clipsToBounds = true
+        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.borderWidth = 4
+        return button
+    }()
+    
     private let headerMargin: CGFloat = 10.0
     private let footerMargin: CGFloat = 10.0
+    
+    let viewModel = HomeViewModel()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(tableView)
         
+        view.addSubview(addThreadButton)
+        
+        addThreadButton.addTarget(self, action: #selector(addThreadButtonDidTap), for: .touchUpInside)
+        
         configureNavigationBar()
         configureComponents()
         configureConstraints()
+    }
+    
+    @objc func addThreadButtonDidTap() {
+        let vc = AddThreadViewController()
+        self.present(vc, animated: true, completion: nil)
     }
 }
 
@@ -37,13 +62,11 @@ final class HomeViewController: UIViewController {
 
 extension HomeViewController {
     private func configureNavigationBar() {
-        navigationItem.title = "急上昇"
-        navigationItem.largeTitleDisplayMode = .always
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.barTintColor = .black
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 32.0)]
+//        navigationItem.title = "急上昇"
+//        navigationItem.largeTitleDisplayMode = .always
+//        navigationController?.navigationBar.prefersLargeTitles = true
+//        navigationController?.navigationBar.tintColor = .white
+//        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
     private func configureComponents() {
@@ -57,10 +80,16 @@ extension HomeViewController {
     
     private func configureConstraints() {
         tableView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(100)
+            make.top.equalToSuperview().offset(10)
             make.bottom.equalToSuperview()
             make.right.equalToSuperview().offset(-20)
             make.left.equalToSuperview().offset(20)
+        }
+        
+        addThreadButton.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-20)
+            make.right.equalToSuperview().offset(-10)
+            make.size.equalTo(CGSize(width: 60.0, height: 60.0))
         }
     }
 }
@@ -78,7 +107,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ThreadThinTableViewCell", for: indexPath) as! ThreadThinTableViewCell
-        // cell.configureDataSouce(source: source)
+//        cell.configureDataSouce(source: viewModel.threads[indexPath.row])
         return cell
     }
     

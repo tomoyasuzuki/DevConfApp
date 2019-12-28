@@ -11,10 +11,10 @@ final class UserModel {
     let userId: String
     var profileImageURL: String?
     let githubUrl: String
-    var posts: [PostModel]?
-    var threads: [ThreadModel]?
+    var posts: [PostModel]
+    var threads: [ThreadModel]
     
-    init(userName: String, userId: String, profileImageURL: String? = nil, githubUrl: String, posts: [PostModel]?, threads: [ThreadModel]?) {
+    init(userName: String, userId: String, profileImageURL: String? = nil, githubUrl: String, posts: [PostModel] = [], threads: [ThreadModel] = []) {
         self.userName = userName
         self.userId = userId
         self.profileImageURL = profileImageURL
@@ -35,7 +35,7 @@ final class UserModel {
         self.githubUrl = githubUrl
         
         self.profileImageURL = nil
-        self.posts = nil
-        self.threads = nil
+        self.posts = []
+        self.threads = []
     }
 }

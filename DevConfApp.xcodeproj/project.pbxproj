@@ -14,6 +14,15 @@
 		5725DBF723910E5B000B5A60 /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725DBF623910E5B000B5A60 /* FirebaseError.swift */; };
 		5725DBF9239270AD000B5A60 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725DBF8239270AD000B5A60 /* UserRepository.swift */; };
 		5725DBFD23927120000B5A60 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725DBFC23927120000B5A60 /* PostRepository.swift */; };
+		5725DBFF2392987B000B5A60 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725DBFE2392987B000B5A60 /* HomeViewModel.swift */; };
+		5725DC01239298D2000B5A60 /* HomeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725DC00239298D2000B5A60 /* HomeTabViewController.swift */; };
+		5725DC0723929D70000B5A60 /* ExReactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725DC0623929D70000B5A60 /* ExReactive.swift */; };
+		574753DF23B7815300A4569B /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753DE23B7815300A4569B /* Const.swift */; };
+		574753E123B78CD200A4569B /* AddThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753E023B78CD200A4569B /* AddThreadViewController.swift */; };
+		574753E323B7923600A4569B /* ExTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753E223B7923600A4569B /* ExTextField.swift */; };
+		574753E523B7982F00A4569B /* UnderBarTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753E423B7982F00A4569B /* UnderBarTextField.swift */; };
+		574753E723B79E2500A4569B /* AddThreadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753E623B79E2500A4569B /* AddThreadViewModel.swift */; };
+		574753EB23B7B9A600A4569B /* AddTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753EA23B7B9A600A4569B /* AddTagViewController.swift */; };
 		57AB2ED2238AAB5C0021C67B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2ED1238AAB5C0021C67B /* AppDelegate.swift */; };
 		57AB2ED4238AAB5C0021C67B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2ED3238AAB5C0021C67B /* SceneDelegate.swift */; };
 		57AB2EDB238AAB5E0021C67B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57AB2EDA238AAB5E0021C67B /* Assets.xcassets */; };
@@ -62,6 +71,15 @@
 		5725DBF623910E5B000B5A60 /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 		5725DBF8239270AD000B5A60 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		5725DBFC23927120000B5A60 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
+		5725DBFE2392987B000B5A60 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		5725DC00239298D2000B5A60 /* HomeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewController.swift; sourceTree = "<group>"; };
+		5725DC0623929D70000B5A60 /* ExReactive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExReactive.swift; sourceTree = "<group>"; };
+		574753DE23B7815300A4569B /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		574753E023B78CD200A4569B /* AddThreadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThreadViewController.swift; sourceTree = "<group>"; };
+		574753E223B7923600A4569B /* ExTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExTextField.swift; sourceTree = "<group>"; };
+		574753E423B7982F00A4569B /* UnderBarTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderBarTextField.swift; sourceTree = "<group>"; };
+		574753E623B79E2500A4569B /* AddThreadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThreadViewModel.swift; sourceTree = "<group>"; };
+		574753EA23B7B9A600A4569B /* AddTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagViewController.swift; sourceTree = "<group>"; };
 		57AB2ECE238AAB5C0021C67B /* DevConfApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevConfApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57AB2ED1238AAB5C0021C67B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57AB2ED3238AAB5C0021C67B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +163,27 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
+		5725DC0223929A8B000B5A60 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				57AB2F09238AAEBB0021C67B /* HomeViewController.swift */,
+				5725DC00239298D2000B5A60 /* HomeTabViewController.swift */,
+				5725DBFE2392987B000B5A60 /* HomeViewModel.swift */,
+				574753E023B78CD200A4569B /* AddThreadViewController.swift */,
+				574753E623B79E2500A4569B /* AddThreadViewModel.swift */,
+				574753EA23B7B9A600A4569B /* AddTagViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		574753DD23B7814400A4569B /* Const */ = {
+			isa = PBXGroup;
+			children = (
+				574753DE23B7815300A4569B /* Const.swift */,
+			);
+			path = Const;
+			sourceTree = "<group>";
+		};
 		57AB2EC5238AAB5C0021C67B = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +209,7 @@
 		57AB2ED0238AAB5C0021C67B /* DevConfApp */ = {
 			isa = PBXGroup;
 			children = (
+				574753DD23B7814400A4569B /* Const */,
 				5725DBF523910E24000B5A60 /* Error */,
 				57AB2F18238BCD0E0021C67B /* Extention */,
 				5725DBF0238F69EE000B5A60 /* Repository */,
@@ -215,7 +255,7 @@
 		57AB2F08238AAE9D0021C67B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				57AB2F09238AAEBB0021C67B /* HomeViewController.swift */,
+				5725DC0223929A8B000B5A60 /* Home */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -236,6 +276,7 @@
 				57AB2F0F238AB5500021C67B /* PaddingLabel.swift */,
 				57AB2F11238AB55A0021C67B /* SubTitleLabel.swift */,
 				57AB2F13238AB6160021C67B /* RadiusLabel.swift */,
+				574753E423B7982F00A4569B /* UnderBarTextField.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -244,6 +285,8 @@
 			isa = PBXGroup;
 			children = (
 				57AB2F19238BCD290021C67B /* ExNavigationController.swift */,
+				5725DC0623929D70000B5A60 /* ExReactive.swift */,
+				574753E223B7923600A4569B /* ExTextField.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -492,22 +535,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				574753E523B7982F00A4569B /* UnderBarTextField.swift in Sources */,
 				57AB2F12238AB55A0021C67B /* SubTitleLabel.swift in Sources */,
 				5725DBF423910AE8000B5A60 /* ThreadRepository.swift in Sources */,
 				57AB2ED2238AAB5C0021C67B /* AppDelegate.swift in Sources */,
 				5725DBF723910E5B000B5A60 /* FirebaseError.swift in Sources */,
 				57AB2F06238AABED0021C67B /* PostModel.swift in Sources */,
+				5725DC01239298D2000B5A60 /* HomeTabViewController.swift in Sources */,
+				574753E323B7923600A4569B /* ExTextField.swift in Sources */,
+				574753E723B79E2500A4569B /* AddThreadViewModel.swift in Sources */,
 				5725DBED238F6710000B5A60 /* ThreadModel.swift in Sources */,
+				5725DBFF2392987B000B5A60 /* HomeViewModel.swift in Sources */,
 				57AB2F1A238BCD290021C67B /* ExNavigationController.swift in Sources */,
 				57AB2ED4238AAB5C0021C67B /* SceneDelegate.swift in Sources */,
 				5725DBF9239270AD000B5A60 /* UserRepository.swift in Sources */,
+				574753E123B78CD200A4569B /* AddThreadViewController.swift in Sources */,
 				57AB2F0A238AAEBB0021C67B /* HomeViewController.swift in Sources */,
 				57AB2F10238AB5500021C67B /* PaddingLabel.swift in Sources */,
 				57AB2F14238AB6160021C67B /* RadiusLabel.swift in Sources */,
 				57AB2F0D238AB37F0021C67B /* ThreadThinTableViewCell.swift in Sources */,
 				57AB2F1C238BCE000021C67B /* EllipseTableViewCell.swift in Sources */,
 				57AB2F02238AABC50021C67B /* UserModel.swift in Sources */,
+				574753EB23B7B9A600A4569B /* AddTagViewController.swift in Sources */,
 				5725DBFD23927120000B5A60 /* PostRepository.swift in Sources */,
+				5725DC0723929D70000B5A60 /* ExReactive.swift in Sources */,
+				574753DF23B7815300A4569B /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
