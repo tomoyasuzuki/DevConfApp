@@ -9,12 +9,11 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import TagListView
 
 class AddThreadViewController: UIViewController {
     let viewModel = AddThreadViewModel()
     let disposeBag = DisposeBag()
-    
-    var tags: [String] = []
  
     var titleLabel: UILabel = {
         let label = UILabel()
@@ -35,10 +34,21 @@ class AddThreadViewController: UIViewController {
         return label
     }()
     
-    var tagIconView: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(named: "tag_icon")
-        view.contentMode = .scaleAspectFit
+    var tagAreaView: TagListView = {
+        let view = TagListView(frame: CGRect(x: 0, y: 0, width: 250, height: 250))
+        view.textFont = .systemFont(ofSize: 15)
+        view.tagBackgroundColor = .blue
+        view.textColor = .white
+        view.shadowRadius = 2
+        view.shadowOpacity = 0.4
+        view.shadowColor = UIColor.black
+        view.shadowOffset = CGSize(width: 1, height: 1)
+        view.alignment = .center
+        view.paddingY = 6
+        view.paddingX = 10
+        view.cornerRadius = 14
+        view.clipsToBounds = true
+        view.enableRemoveButton = true
         return view
     }()
     
@@ -49,20 +59,11 @@ class AddThreadViewController: UIViewController {
         return label
     }()
     
-    var tagInputtedField: UITextField = {
-        let field = UnderBarTextField(frame: CGRect(x: 0, y: 0, width: 250, height: 25))
-        field.placeholder = "タグをつけてみよう"
-        return field
-    }()
-    
-    var tagAddButton: UIButton = {
+    var addTagButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .white
-        button.layer.cornerRadius = 20
-        button.clipsToBounds = true
-        button.layer.borderColor = UIColor.black.cgColor
-        button.layer.borderWidth = 4
-        button.setTitle("+", for: .normal)
+        button.setImage(UIImage(named: "add_icon"), for: .normal)
+        button.setImage(UIImage(named: "add_icon"), for: .highlighted)
+        button.imageView?.contentMode = .scaleAspectFit
         return button
     }()
     
@@ -91,23 +92,27 @@ class AddThreadViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(titleInput)
         view.addSubview(textCountLabel)
-        view.addSubview(tagIconView)
-        view.addSubview(tagInputtedField)
+        view.addSubview(tagAreaView)
         view.addSubview(tagLabel)
-        view.addSubview(tagAddButton)
+        view.addSubview(addTagButton)
         view.addSubview(addButton)
         view.addSubview(closeButton)
         
         addButton.addTarget(self, action: #selector(addButtonDidTap), for: .touchUpInside)
         closeButton.addTarget(self, action: #selector(closeButtonDidTap), for: .touchUpInside)
-        tagAddButton.addTarget(self, action: #selector(addTagButtonDidTap), for: .touchUpInside)
+        addTagButton.addTarget(self, action: #selector(addTagButtonDidTap), for: .touchUpInside)
         
         configureObserver()
-        configureConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+//        self.updateTagViewConstraints()
     }
     
     
-    private func configureConstraints() {
+    override func updateViewConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(40)
@@ -129,26 +134,20 @@ class AddThreadViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
-        tagInputtedField.snp.makeConstraints { make in
+        tagAreaView.snp.makeConstraints { make in
             make.top.equalTo(tagLabel.snp.bottom).offset(24)
+            make.size.equalTo(250)
             make.centerX.equalToSuperview()
-            make.width.equalTo(250)
         }
         
-        tagIconView.snp.makeConstraints { make in
-            make.centerY.equalTo(tagInputtedField)
-            make.right.equalTo(tagInputtedField.snp.left).offset(-10)
-            make.size.equalTo(30)
-        }
-        
-        tagAddButton.snp.makeConstraints { make in
-            make.centerY.equalTo(tagInputtedField)
-            make.left.equalTo(tagInputtedField.snp.right).offset(10)
-            make.size.equalTo(40)
+        addTagButton.snp.makeConstraints { make in
+            make.centerY.equalTo(tagLabel)
+            make.left.equalTo(tagAreaView.snp.right).offset(10)
+            make.size.equalTo(40).multipliedBy(1.0)
         }
         
         addButton.snp.makeConstraints { make in
-            make.top.equalTo(tagInputtedField.snp.bottom).offset(50)
+            make.top.equalTo(tagAreaView.snp.bottom).offset(50)
             make.centerX.equalToSuperview()
             make.width.equalTo(150)
             make.height.equalTo(60)
@@ -159,7 +158,17 @@ class AddThreadViewController: UIViewController {
             make.left.equalToSuperview().offset(10)
             make.size.equalTo(30)
         }
+        
+        super.updateViewConstraints()
     }
+    
+//    private func updateTagViewConstraints() {
+//        tagAreaView.snp.remakeConstraints { make in
+//            make.top.equalTo(tagLabel.snp.bottom).offset(24)
+//            make.centerX.equalToSuperview()
+//            make.size.equalTo(tagAreaView.intrinsicContentSize.height)
+//        }
+//    }
     
     private func configureObserver() {
         titleInput.rx.text
@@ -174,14 +183,6 @@ class AddThreadViewController: UIViewController {
     
     
     @objc func addButtonDidTap() {
-        // 投稿処理
-        guard let text = titleInput.text else { return }
-        
-//        let thread = ThreadModel(threadId: "",
-//                                 title: text,
-//                                 createdAt: Date().description,
-//                                 updatedAt: Date().description, tags: [], isActive: , clippingUsers: , posts: )
-//        viewModel.addThread()
         
     }
     
@@ -191,6 +192,20 @@ class AddThreadViewController: UIViewController {
     
     @objc func addTagButtonDidTap() {
         let vc = AddTagViewController()
+        vc.delegate = self
         self.present(vc, animated: true, completion: nil)
+    }
+}
+
+
+extension AddThreadViewController: TagListViewDelegate {
+    func tagRemoveButtonPressed(_ title: String, tagView: TagView, sender: TagListView) {
+        sender.removeTagView(tagView)
+    }
+}
+
+extension AddThreadViewController: TagDelegate {
+    func tagDidSelected(_ text: TagModel) {
+        self.tagAreaView.addTag(text.title)
     }
 }

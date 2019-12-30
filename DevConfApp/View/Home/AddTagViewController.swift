@@ -8,22 +8,36 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
+import RxFirebase
+import FirebaseFirestore
 
-class AddTagViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+protocol TagDelegate {
+    func tagDidSelected(_ text: TagModel)
+}
+
+class AddTagViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+    let db = Firestore.firestore()
     
-    var tags: [String] = ["Swift", "DDD", "iOS"]
+    var tags: [TagModel] = []
     var naviBarHeight: ConstraintOffsetTarget?
     
-    var searchBar: UISearchBar = {
+    let disposeBag = DisposeBag()
+    
+    var delegate: TagDelegate?
+    
+    lazy var searchBar: UISearchBar = {
         let bar = UISearchBar()
         bar.placeholder = "タグを検索する"
+        bar.delegate = self
         
         let textField = bar.searchTextField
         textField.backgroundColor = .black
         textField.textColor = .white
         textField.layer.cornerRadius = 6.0
         textField.clipsToBounds = true
-
+        
         return bar
     }()
     
@@ -32,18 +46,26 @@ class AddTagViewController: UIViewController, UITableViewDelegate, UITableViewDa
         table.automaticallyAdjustsScrollIndicatorInsets = false
         table.delegate = self
         table.dataSource = self
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "TAGCELL")
+        table.register(TagTableViewCell.self, forCellReuseIdentifier: "TAGCELL")
+        table.tableFooterView = UIView()
         return table
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.addSubview(searchBar)
         view.addSubview(tagTableView)
         
+        if let nav = navigationController {
+            self.naviBarHeight = nav.navigationBar.frame.size.height
+        }
+        
         self.configureConstraints()
+        self.observeTags()
     }
+    
+    // MARK: Layout
     
     private func configureConstraints() {
         searchBar.snp.makeConstraints { make in
@@ -64,11 +86,18 @@ class AddTagViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     private func dismissVC() {
-        navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    func passTag(_ tag: String, complition: (String) -> ()) {
-        complition(tag)
+    // MARK: Observers
+    
+    func observeTags() {
+        searchBar.rx.text.asObservable()
+            .subscribe(onNext: { [weak self] text in
+                guard let text = text else { return }
+                self?.search(text)
+                self?.tagTableView.reloadData()
+            }).disposed(by: disposeBag)
     }
     
     // MARK: TableViewDelegate
@@ -78,14 +107,61 @@ class AddTagViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TAGCELL", for: indexPath)
-        cell.textLabel?.text = tags[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TAGCELL", for: indexPath) as! TagTableViewCell
+        if !tags.isEmpty && tags.count >= 1 {
+            cell.tagNameLabel.text = tags[indexPath.row].title
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // タグを元のVCに渡す
+        delegate?.tagDidSelected(self.tags[indexPath.row])
         
         self.dismissVC()
+    }
+    
+    // MARK: SearchBarDelegate
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else {
+            return
+        }
+        
+        self.search(text)
+        self.tagTableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else {
+            return
+        }
+        
+        self.search(text)
+        self.tagTableView.reloadData()
+    }
+    // MARK: Searcch
+    
+    func search(_ text: String) {
+        if !tags.isEmpty {
+            self.tags = []
+        }
+        
+        self.tags.append(TagModel(title: text))
+        
+        db.collection(Const.tag)
+            .whereField(Const.title, isEqualTo: text)
+            .addSnapshotListener { [weak self] snp, err in
+                if snp == nil || err != nil {
+                    return
+                }
+                
+                snp?.documentChanges.forEach { change in
+                    let data = change.document.data()
+                    
+                    if let tag = TagModel(data: data) {
+                        self?.tags.append(tag)
+                    }
+                }
+        }
     }
 }

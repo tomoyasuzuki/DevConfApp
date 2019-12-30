@@ -23,6 +23,11 @@
 		574753E523B7982F00A4569B /* UnderBarTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753E423B7982F00A4569B /* UnderBarTextField.swift */; };
 		574753E723B79E2500A4569B /* AddThreadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753E623B79E2500A4569B /* AddThreadViewModel.swift */; };
 		574753EB23B7B9A600A4569B /* AddTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753EA23B7B9A600A4569B /* AddTagViewController.swift */; };
+		574753ED23B851B100A4569B /* AddTagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753EC23B851B100A4569B /* AddTagViewModel.swift */; };
+		574753EF23B8559800A4569B /* TagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753EE23B8559800A4569B /* TagModel.swift */; };
+		574753F323B8A41100A4569B /* SuggestTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753F223B8A41100A4569B /* SuggestTableView.swift */; };
+		574753F523B8A51800A4569B /* TableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753F423B8A51800A4569B /* TableViewAdapter.swift */; };
+		574753F723B9931000A4569B /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753F623B9931000A4569B /* TagTableViewCell.swift */; };
 		57AB2ED2238AAB5C0021C67B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2ED1238AAB5C0021C67B /* AppDelegate.swift */; };
 		57AB2ED4238AAB5C0021C67B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2ED3238AAB5C0021C67B /* SceneDelegate.swift */; };
 		57AB2EDB238AAB5E0021C67B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57AB2EDA238AAB5E0021C67B /* Assets.xcassets */; };
@@ -80,6 +85,11 @@
 		574753E423B7982F00A4569B /* UnderBarTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderBarTextField.swift; sourceTree = "<group>"; };
 		574753E623B79E2500A4569B /* AddThreadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThreadViewModel.swift; sourceTree = "<group>"; };
 		574753EA23B7B9A600A4569B /* AddTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagViewController.swift; sourceTree = "<group>"; };
+		574753EC23B851B100A4569B /* AddTagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagViewModel.swift; sourceTree = "<group>"; };
+		574753EE23B8559800A4569B /* TagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagModel.swift; sourceTree = "<group>"; };
+		574753F223B8A41100A4569B /* SuggestTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestTableView.swift; sourceTree = "<group>"; };
+		574753F423B8A51800A4569B /* TableViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewAdapter.swift; sourceTree = "<group>"; };
+		574753F623B9931000A4569B /* TagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTableViewCell.swift; sourceTree = "<group>"; };
 		57AB2ECE238AAB5C0021C67B /* DevConfApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevConfApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57AB2ED1238AAB5C0021C67B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57AB2ED3238AAB5C0021C67B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +151,7 @@
 				5725DBEC238F6710000B5A60 /* ThreadModel.swift */,
 				57AB2F05238AABED0021C67B /* PostModel.swift */,
 				57AB2F01238AABC50021C67B /* UserModel.swift */,
+				574753EE23B8559800A4569B /* TagModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -172,6 +183,10 @@
 				574753E023B78CD200A4569B /* AddThreadViewController.swift */,
 				574753E623B79E2500A4569B /* AddThreadViewModel.swift */,
 				574753EA23B7B9A600A4569B /* AddTagViewController.swift */,
+				574753EC23B851B100A4569B /* AddTagViewModel.swift */,
+				574753F223B8A41100A4569B /* SuggestTableView.swift */,
+				574753F423B8A51800A4569B /* TableViewAdapter.swift */,
+				574753F623B9931000A4569B /* TagTableViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -535,15 +550,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				574753EF23B8559800A4569B /* TagModel.swift in Sources */,
 				574753E523B7982F00A4569B /* UnderBarTextField.swift in Sources */,
 				57AB2F12238AB55A0021C67B /* SubTitleLabel.swift in Sources */,
 				5725DBF423910AE8000B5A60 /* ThreadRepository.swift in Sources */,
 				57AB2ED2238AAB5C0021C67B /* AppDelegate.swift in Sources */,
 				5725DBF723910E5B000B5A60 /* FirebaseError.swift in Sources */,
 				57AB2F06238AABED0021C67B /* PostModel.swift in Sources */,
+				574753F523B8A51800A4569B /* TableViewAdapter.swift in Sources */,
 				5725DC01239298D2000B5A60 /* HomeTabViewController.swift in Sources */,
 				574753E323B7923600A4569B /* ExTextField.swift in Sources */,
 				574753E723B79E2500A4569B /* AddThreadViewModel.swift in Sources */,
+				574753F323B8A41100A4569B /* SuggestTableView.swift in Sources */,
 				5725DBED238F6710000B5A60 /* ThreadModel.swift in Sources */,
 				5725DBFF2392987B000B5A60 /* HomeViewModel.swift in Sources */,
 				57AB2F1A238BCD290021C67B /* ExNavigationController.swift in Sources */,
@@ -558,8 +576,10 @@
 				57AB2F02238AABC50021C67B /* UserModel.swift in Sources */,
 				574753EB23B7B9A600A4569B /* AddTagViewController.swift in Sources */,
 				5725DBFD23927120000B5A60 /* PostRepository.swift in Sources */,
+				574753F723B9931000A4569B /* TagTableViewCell.swift in Sources */,
 				5725DC0723929D70000B5A60 /* ExReactive.swift in Sources */,
 				574753DF23B7815300A4569B /* Const.swift in Sources */,
+				574753ED23B851B100A4569B /* AddTagViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

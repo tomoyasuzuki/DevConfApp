@@ -6,7 +6,7 @@
 //  Copyright © 2019 tomoya.suzuki. All rights reserved.
 //
 
-final class UserModel {
+struct UserModel {
     let userName: String
     let userId: String
     var profileImageURL: String?
