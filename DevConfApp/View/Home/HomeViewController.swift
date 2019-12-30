@@ -24,11 +24,9 @@ final class HomeViewController: UIViewController {
     
     var addThreadButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .white
-        button.layer.cornerRadius = 30
-        button.clipsToBounds = true
-        button.layer.borderColor = UIColor.black.cgColor
-        button.layer.borderWidth = 4
+        button.setImage(UIImage(named: "add_icon"), for: .normal)
+        button.setImage(UIImage(named: "add_icon"), for: .highlighted)
+        button.imageView?.contentMode = .scaleAspectFit
         return button
     }()
     

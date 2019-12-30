@@ -14,28 +14,51 @@ import TagListView
 class AddThreadViewController: UIViewController {
     let viewModel = AddThreadViewModel()
     let disposeBag = DisposeBag()
- 
-    var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "タイトル"
-        label.font = UIFont.boldSystemFont(ofSize: 25.0)
-        return label
-    }()
     
-    lazy var titleInput: UITextField = {
-        let field = UnderBarTextField(frame: CGRect(x: 0, y: 0, width: 250, height: 25))
-        field.placeholder = "タイトルをつけよう"
+    var tagsCount: Int = 0
+    
+    // タイトル
+    
+    var titleInput: PaddingTextField = {
+        let field = PaddingTextField(padding: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0))
+        field.layer.cornerRadius = 18.0
+        field.clipsToBounds = true
+        field.layer.borderWidth = 2.0
+        field.layer.borderColor = UIColor.lightGray.cgColor
+        field.placeholder = "タイトル"
+        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 50))
         return field
     }()
     
     var textCountLabel: UILabel = {
         let label = UILabel()
         label.text = "0"
+        label.backgroundColor = .clear
         return label
     }()
     
-    var tagAreaView: TagListView = {
-        let view = TagListView(frame: CGRect(x: 0, y: 0, width: 250, height: 250))
+    // タグ
+    
+    var tagAreaBorderView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 18.0
+        view.clipsToBounds = true
+        view.layer.borderColor = UIColor.lightGray.cgColor
+        view.layer.borderWidth = 2.0
+        view.isUserInteractionEnabled = false
+        return view
+    }()
+    
+    var tagLabel: UILabel = {
+        let label = UILabel()
+        label.text = "タグ"
+        label.textColor = .lightGray
+        label.backgroundColor = .clear
+        return label
+    }()
+    
+    lazy var tagAreaView: TagListView = {
+        let view = TagListView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 20, height: 50))
         view.textFont = .systemFont(ofSize: 15)
         view.tagBackgroundColor = .blue
         view.textColor = .white
@@ -43,22 +66,17 @@ class AddThreadViewController: UIViewController {
         view.shadowOpacity = 0.4
         view.shadowColor = UIColor.black
         view.shadowOffset = CGSize(width: 1, height: 1)
-        view.alignment = .center
+        view.alignment = .left
         view.paddingY = 6
         view.paddingX = 10
-        view.cornerRadius = 14
+        view.cornerRadius = 10.0
         view.clipsToBounds = true
         view.enableRemoveButton = true
+        view.backgroundColor = .clear
+        view.delegate = self
         return view
     }()
-    
-    var tagLabel: UILabel = {
-        let label = UILabel()
-        label.text = "タグ"
-        label.font = UIFont.boldSystemFont(ofSize: 25.0)
-        return label
-    }()
-    
+   
     var addTagButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "add_icon"), for: .normal)
@@ -69,10 +87,10 @@ class AddThreadViewController: UIViewController {
     
     var addButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Add", for: .normal)
+        button.setTitle("追加", for: .normal)
         button.backgroundColor = .black
         button.titleLabel?.textColor = .white
-        button.layer.cornerRadius = 8.0
+        button.layer.cornerRadius = 18.0
         button.clipsToBounds = true
         return button
     }()
@@ -89,9 +107,9 @@ class AddThreadViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        view.addSubview(titleLabel)
         view.addSubview(titleInput)
         view.addSubview(textCountLabel)
+        view.addSubview(tagAreaBorderView)
         view.addSubview(tagAreaView)
         view.addSubview(tagLabel)
         view.addSubview(addTagButton)
@@ -113,37 +131,45 @@ class AddThreadViewController: UIViewController {
     
     
     override func updateViewConstraints() {
-        titleLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(40)
-        }
-        
         titleInput.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(24)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(250)
+            make.height.equalTo(40)
+            make.top.equalToSuperview().offset(50)
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
         }
         
         textCountLabel.snp.makeConstraints { make in
+            make.right.equalTo(titleInput).offset(-10)
             make.centerY.equalTo(titleInput)
-            make.left.equalTo(titleInput.snp.right).offset(10)
+            make.height.equalTo(titleInput)
         }
         
-        tagLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleInput.snp.bottom).offset(50)
-            make.centerX.equalToSuperview()
+        tagAreaBorderView.snp.makeConstraints { make in
+            make.top.equalTo(titleInput.snp.bottom).offset(10)
+            make.height.equalTo(50)
+            make.right.equalToSuperview().offset(-10)
+            make.left.equalToSuperview().offset(10)
+        }
+        
+        if tagsCount == 0 {
+            tagLabel.snp.makeConstraints { make in
+                make.centerY.equalTo(tagAreaBorderView)
+                make.left.equalTo(tagAreaBorderView).offset(10)
+            }
         }
         
         tagAreaView.snp.makeConstraints { make in
-            make.top.equalTo(tagLabel.snp.bottom).offset(24)
-            make.size.equalTo(250)
-            make.centerX.equalToSuperview()
+            make.top.equalTo(tagAreaBorderView).offset(10)
+            make.height.equalTo(tagAreaBorderView)
+            make.center.equalTo(tagAreaBorderView)
+            make.left.equalTo(tagAreaBorderView).offset(10)
+            make.width.equalTo(tagAreaBorderView.frame.width - 30)
         }
         
         addTagButton.snp.makeConstraints { make in
-            make.centerY.equalTo(tagLabel)
-            make.left.equalTo(tagAreaView.snp.right).offset(10)
-            make.size.equalTo(40).multipliedBy(1.0)
+            make.centerY.equalTo(tagAreaBorderView)
+            make.right.equalTo(tagAreaBorderView).offset(-10)
+            make.size.equalTo(30).multipliedBy(1.0)
         }
         
         addButton.snp.makeConstraints { make in
@@ -201,11 +227,43 @@ class AddThreadViewController: UIViewController {
 extension AddThreadViewController: TagListViewDelegate {
     func tagRemoveButtonPressed(_ title: String, tagView: TagView, sender: TagListView) {
         sender.removeTagView(tagView)
+        self.tagsCount -= tagsCount
+        
+        if tagsCount == 0 {
+            self.tagLabel.isHidden = false
+            
+            tagAreaBorderView.snp.makeConstraints { make in
+                make.top.equalTo(titleInput.snp.bottom).offset(10)
+                make.height.equalTo(50)
+                make.right.equalToSuperview().offset(-10)
+                make.left.equalToSuperview().offset(10)
+            }
+        } else {
+            tagAreaBorderView.snp.remakeConstraints { make in
+                make.top.equalTo(titleInput.snp.bottom).offset(10)
+                make.height.equalTo(tagAreaView.intrinsicContentSize.height + 20)
+                make.width.equalTo(tagAreaBorderView.frame.width - 30)
+                make.right.equalToSuperview().offset(-10)
+                make.left.equalToSuperview().offset(10)
+            }
+        }
     }
 }
 
 extension AddThreadViewController: TagDelegate {
     func tagDidSelected(_ text: TagModel) {
+        self.tagLabel.isHidden = true
         self.tagAreaView.addTag(text.title)
+        self.tagsCount += tagsCount
+        
+        if tagAreaView.intrinsicContentSize.height > tagAreaBorderView.frame.height {
+            tagAreaBorderView.snp.remakeConstraints { make in
+                make.top.equalTo(titleInput.snp.bottom).offset(10)
+                make.height.equalTo(tagAreaView.intrinsicContentSize.height + 20)
+                make.width.equalTo(tagAreaBorderView.frame.width - 30)
+                make.right.equalToSuperview().offset(-10)
+                make.left.equalToSuperview().offset(10)
+            }
+        }
     }
 }
