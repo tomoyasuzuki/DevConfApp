@@ -38,7 +38,7 @@
 		5747541323BCC88300A4569B /* ExUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747541223BCC88300A4569B /* ExUIView.swift */; };
 		5747541523BDFB0A00A4569B /* ProfileListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747541423BDFB0A00A4569B /* ProfileListView.swift */; };
 		5747541723BDFBE300A4569B /* SkillListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747541623BDFBE300A4569B /* SkillListView.swift */; };
-		5747541923BDFC0F00A4569B /* SelfIntroduceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747541823BDFC0F00A4569B /* SelfIntroduceView.swift */; };
+		5747541923BDFC0F00A4569B /* IntroduceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747541823BDFC0F00A4569B /* IntroduceView.swift */; };
 		5747541B23BDFCE600A4569B /* PortFolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747541A23BDFCE600A4569B /* PortFolioView.swift */; };
 		5747541D23BE03AF00A4569B /* PortFolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747541C23BE03AF00A4569B /* PortFolioTableViewCell.swift */; };
 		5747541F23BE09B200A4569B /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747541E23BE09B200A4569B /* DemoViewController.swift */; };
@@ -114,7 +114,7 @@
 		5747541223BCC88300A4569B /* ExUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExUIView.swift; sourceTree = "<group>"; };
 		5747541423BDFB0A00A4569B /* ProfileListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileListView.swift; sourceTree = "<group>"; };
 		5747541623BDFBE300A4569B /* SkillListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillListView.swift; sourceTree = "<group>"; };
-		5747541823BDFC0F00A4569B /* SelfIntroduceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfIntroduceView.swift; sourceTree = "<group>"; };
+		5747541823BDFC0F00A4569B /* IntroduceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceView.swift; sourceTree = "<group>"; };
 		5747541A23BDFCE600A4569B /* PortFolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortFolioView.swift; sourceTree = "<group>"; };
 		5747541C23BE03AF00A4569B /* PortFolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortFolioTableViewCell.swift; sourceTree = "<group>"; };
 		5747541E23BE09B200A4569B /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
@@ -304,7 +304,7 @@
 				5747541023BCC33D00A4569B /* UserCommentViewController.swift */,
 				5747541423BDFB0A00A4569B /* ProfileListView.swift */,
 				5747541623BDFBE300A4569B /* SkillListView.swift */,
-				5747541823BDFC0F00A4569B /* SelfIntroduceView.swift */,
+				5747541823BDFC0F00A4569B /* IntroduceView.swift */,
 				5747541A23BDFCE600A4569B /* PortFolioView.swift */,
 				5747541C23BE03AF00A4569B /* PortFolioTableViewCell.swift */,
 				5747541E23BE09B200A4569B /* DemoViewController.swift */,
@@ -620,7 +620,7 @@
 				5747541323BCC88300A4569B /* ExUIView.swift in Sources */,
 				57AB2F14238AB6160021C67B /* RadiusLabel.swift in Sources */,
 				5747541F23BE09B200A4569B /* DemoViewController.swift in Sources */,
-				5747541923BDFC0F00A4569B /* SelfIntroduceView.swift in Sources */,
+				5747541923BDFC0F00A4569B /* IntroduceView.swift in Sources */,
 				5747541523BDFB0A00A4569B /* ProfileListView.swift in Sources */,
 				57AB2F0D238AB37F0021C67B /* ThreadThinTableViewCell.swift in Sources */,
 				5747541123BCC33D00A4569B /* UserCommentViewController.swift in Sources */,

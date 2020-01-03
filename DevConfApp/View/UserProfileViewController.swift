@@ -35,19 +35,6 @@ class UserProfileViewController: UIViewController, UIScrollViewDelegate {
         return scroll
     }()
     
-    private let infoText: UILabel = {
-        let infoText = UILabel()
-        infoText.textColor = .white
-        infoText.numberOfLines = 0
-        let text =  """
-                        Lorem ipsum dolor sit amet, in alia adhuc aperiri nam. Movet scripta tractatos cu eum, sale commodo meliore ea eam, per commodo atomorum ea. Unum graeci iriure nec an, ea sit habeo movet electram. Id eius assum persius pro, id cum falli accusam. Has eu fierent partiendo, doming expetenda interesset cu mel, tempor possit vocent in nam. Iusto tollit ad duo, est at vidit vivendo liberavisse, vide munere nonumy sed ex.
-                                
-                        Quod possit expetendis id qui, consequat vituperata ad eam. Per cu elit latine vivendum. Ei sit nullam aliquam, an ferri epicuri quo. Ex vim tibique accumsan erroribus. In per libris verear adipiscing. Purto aliquid lobortis ea quo, ea utinam oportere qui.
-                        """
-        infoText.text = text + text + text
-        return infoText
-    }()
-    
     var backgroundImageView: UIImageView = {
         let view = UIImageView()
         view.backgroundColor = Const.color.whiteSmoke
@@ -93,7 +80,7 @@ class UserProfileViewController: UIViewController, UIScrollViewDelegate {
     }()
     
     var editProfileButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         button.setImage(UIImage(named: "edit_icon")!.withRenderingMode(.alwaysTemplate), for: .normal)
         button.setImage(UIImage(named: "edit_icon")!.withRenderingMode(.alwaysTemplate), for: .highlighted)
         button.tintColor = .white
@@ -116,6 +103,9 @@ class UserProfileViewController: UIViewController, UIScrollViewDelegate {
     var imageContainer = UIView()
     var textContainer = UIView()
     
+    var intro = IntroduceView()
+    var port = PortFolioView()
+    
     var userProfileContainerView = UIView()
     
     private var animator = UIViewPropertyAnimator(duration: 3.0, curve: .easeInOut)
@@ -133,7 +123,6 @@ class UserProfileViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentInsetAdjustmentBehavior = .never
         
         //        let textContainer = UIView()
-        textContainer.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1235740449, blue: 0.2699040081, alpha: 1)
         
         //        let imageContainer = UIView()
         imageContainer.backgroundColor = .darkGray
@@ -157,7 +146,8 @@ class UserProfileViewController: UIViewController, UIScrollViewDelegate {
         backgroundImageContainer.addSubview(skillTagArea)
         
         
-        textContainer.addSubview(infoText)
+        textContainer.addSubview(intro)
+        textContainer.addSubview(port)
         
         naviBarTitle.snp.makeConstraints { make in
             make.top.equalTo(view).offset(10)
@@ -167,7 +157,7 @@ class UserProfileViewController: UIViewController, UIScrollViewDelegate {
         tabEditButton.snp.makeConstraints { make in
             make.centerY.equalTo(settingButton)
             make.right.equalTo(settingButton.snp.left).offset(-10)
-            make.size.equalTo(30)
+            make.size.equalTo(20)
         }
         
         scrollView.snp.makeConstraints {
@@ -211,10 +201,15 @@ class UserProfileViewController: UIViewController, UIScrollViewDelegate {
             make.bottom.equalTo(scrollView)
         }
         
-        infoText.snp.makeConstraints {
+        intro.snp.makeConstraints {
             make in
             
-            make.edges.equalTo(textContainer).inset(14)
+            make.top.right.left.equalTo(textContainer)
+        }
+        
+        port.snp.makeConstraints { make in
+            make.top.equalTo(intro.snp.bottom)
+            make.right.left.bottom.equalTo(textContainer)
         }
         
         userNameLabel.snp.makeConstraints { make in
@@ -244,13 +239,13 @@ class UserProfileViewController: UIViewController, UIScrollViewDelegate {
         editProfileButton.snp.makeConstraints { make in
             make.centerY.equalTo(backgroundImageView.snp.bottom)
             make.centerX.equalTo(view.snp.right).offset(-40)
-            make.size.equalTo(50)
+            make.size.equalTo(40)
         }
         
         settingButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-15)
-            make.size.equalTo(30)
+            make.size.equalTo(20)
         }
     }
     
@@ -258,14 +253,14 @@ class UserProfileViewController: UIViewController, UIScrollViewDelegate {
         // 背景画像をフェードイン、フェードアウトさせる
         self.backgroundImageContainer.alpha = 1 - ((scrollView.contentOffset.y - 60) / 100)
         
-        if scrollView.contentOffset.y > 50 && self.editProfileButton.frame.size.height <= 50, scrollView.contentOffset.y <= 300 {
+        if scrollView.contentOffset.y > 40 && self.editProfileButton.frame.size.height <= 40, scrollView.contentOffset.y <= 300 {
             // 編集ボタンを小さくする、大きくする
             self.editProfileButton.snp.remakeConstraints { make in
                 make.centerY.equalTo(backgroundImageView.snp.bottom)
                 make.centerX.equalTo(view.snp.right).offset(-40)
-                make.size.equalTo(50 - (scrollView.contentOffset.y - 50) * 0.2)
+                make.size.equalTo(40 - (scrollView.contentOffset.y - 40) * 0.2)
             }
-            self.editProfileButton.layer.cornerRadius = (50 - (scrollView.contentOffset.y - 50) * 0.2) / 2
+            self.editProfileButton.layer.cornerRadius = (40 - (scrollView.contentOffset.y - 40) * 0.2) / 2
             self.editProfileButton.alpha = 1 - ((scrollView.contentOffset.y - 60) / 100)
         }
     }

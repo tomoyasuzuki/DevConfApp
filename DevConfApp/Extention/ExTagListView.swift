@@ -12,8 +12,8 @@ import UIKit
 extension TagListView {
     func applyDefault() {
         self.textFont = .systemFont(ofSize: 15)
-        self.tagBackgroundColor = Const.color.vividBlue
-        self.textColor = .white
+        self.tagBackgroundColor = Const.color.white242
+        self.textColor = .black
         self.shadowRadius = 2
         self.shadowOpacity = 0.4
         self.shadowColor = UIColor.black

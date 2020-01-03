@@ -33,6 +33,7 @@ class PortFolioView: UIView {
         table.dataSource = self
         table.tableFooterView = UIView()
         table.estimatedRowHeight = 300
+        table.isUserInteractionEnabled = false
         return table
     }()
     
@@ -81,6 +82,7 @@ class PortFolioView: UIView {
             make.top.equalTo(table.snp.bottom).offset(20)
             make.left.equalTo(titleLabel)
             make.size.equalTo(20)
+            make.bottom.equalToSuperview().offset(-10)
         }
         
         addTextLabel.snp.makeConstraints { make in
