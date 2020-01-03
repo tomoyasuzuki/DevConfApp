@@ -13,7 +13,7 @@ class EllipseTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        layer.cornerRadius = 14.0
+        layer.cornerRadius = 24.0
         clipsToBounds = true
     }
 }

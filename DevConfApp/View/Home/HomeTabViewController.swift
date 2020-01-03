@@ -25,7 +25,7 @@ final class HomeTabViewController: UITabBarController {
         
         var viewControllers = [UIViewController]()
         homeViewController.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarItem.SystemItem.mostRecent, tag: 1)
-        viewControllers.append(homeViewController)
+        viewControllers.append(UserProfileViewController())
         
         
         self.setViewControllers(viewControllers, animated: false)

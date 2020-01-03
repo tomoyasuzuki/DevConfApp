@@ -6,7 +6,7 @@
 //  Copyright © 2019 tomoya.suzuki. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Const {
     static let post = "post"
@@ -27,4 +27,12 @@ struct Const {
     static let profileImageUrl = "profileImageUrl"
     static let githubUrl = "githubUrl"
     static let threads = "threads"
+    
+    struct color {
+        static let whiteSmoke = UIColor.hex(string: "#f5f5f5", alpha: 1.0)
+        static let white242 = UIColor.hex(string: "#f2f2f2", alpha: 1.0)
+        static let vividBlue = UIColor.hex(string: "#0000ff", alpha: 1.0)
+        static let vividLightBlue = UIColor.hex(string: "#00ffff", alpha: 1.0)
+        static let vividPurple = UIColor.hex(string: "#ff00ff", alpha: 1.0)
+    }
 }

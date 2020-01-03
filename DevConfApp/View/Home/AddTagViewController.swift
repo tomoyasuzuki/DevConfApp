@@ -115,7 +115,7 @@ class AddTagViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.tagDidSelected(self.tags[indexPath.row])
+        delegate?.tagDidSelected(self.tags[indexPath.row]) 
         
         self.dismissVC()
     }
@@ -133,6 +133,10 @@ class AddTagViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         guard let text = searchBar.text else {
+            return
+        }
+        
+        if text.isEmpty || text == "" {
             return
         }
         

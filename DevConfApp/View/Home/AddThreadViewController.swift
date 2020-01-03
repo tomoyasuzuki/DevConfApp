@@ -10,10 +10,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 import TagListView
+import FirebaseFirestore
 
 class AddThreadViewController: UIViewController {
     let viewModel = AddThreadViewModel()
     let disposeBag = DisposeBag()
+    
+    let db = Firestore.firestore()
     
     var tagsCount: Int = 0
     
@@ -23,9 +26,8 @@ class AddThreadViewController: UIViewController {
         let field = PaddingTextField(padding: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0))
         field.layer.cornerRadius = 18.0
         field.clipsToBounds = true
-        field.layer.borderWidth = 2.0
-        field.layer.borderColor = UIColor.lightGray.cgColor
-        field.placeholder = "タイトル"
+        field.backgroundColor = Const.color.whiteSmoke
+        field.attributedPlaceholder = NSAttributedString(string: "タイトル", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 50))
         return field
     }()
@@ -41,26 +43,36 @@ class AddThreadViewController: UIViewController {
     
     var tagAreaBorderView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 18.0
+        view.layer.cornerRadius = 24.0
         view.clipsToBounds = true
-        view.layer.borderColor = UIColor.lightGray.cgColor
-        view.layer.borderWidth = 2.0
         view.isUserInteractionEnabled = false
+        view.backgroundColor = Const.color.whiteSmoke
         return view
     }()
     
     var tagLabel: UILabel = {
         let label = UILabel()
         label.text = "タグ"
-        label.textColor = .lightGray
+        label.textColor = .gray
         label.backgroundColor = .clear
         return label
+    }()
+    
+    var firstPostTextView: UITextView = {
+        let view = UITextView()
+        view.backgroundColor = Const.color.whiteSmoke
+        view.text = "最初のコメントを設定しましょう"
+        view.textColor = .gray
+        view.layer.cornerRadius = 24.0
+        view.clipsToBounds = true
+        view.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        return view
     }()
     
     lazy var tagAreaView: TagListView = {
         let view = TagListView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 20, height: 50))
         view.textFont = .systemFont(ofSize: 15)
-        view.tagBackgroundColor = .blue
+        view.tagBackgroundColor = Const.color.vividBlue
         view.textColor = .white
         view.shadowRadius = 2
         view.shadowOpacity = 0.4
@@ -69,14 +81,14 @@ class AddThreadViewController: UIViewController {
         view.alignment = .left
         view.paddingY = 6
         view.paddingX = 10
-        view.cornerRadius = 10.0
-        view.clipsToBounds = true
         view.enableRemoveButton = true
         view.backgroundColor = .clear
+        view.cornerRadius = 10.0
+        view.clipsToBounds = true
         view.delegate = self
         return view
     }()
-   
+    
     var addTagButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "add_icon"), for: .normal)
@@ -86,11 +98,16 @@ class AddThreadViewController: UIViewController {
     }()
     
     var addButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("追加", for: .normal)
-        button.backgroundColor = .black
-        button.titleLabel?.textColor = .white
-        button.layer.cornerRadius = 18.0
+        // frameを設定しないと背景のlayerにも影響を及ぼすよう
+        let button = GradientButton(frame: CGRect(x: 0,
+                                                  y: 0,
+                                                  width: 0,
+                                                  height: 0),
+                                    startColor: Const.color.vividBlue.cgColor,
+                                    endColor: Const.color.vividLightBlue.cgColor, cornerRadius: 24.0)
+        button.setTitle("スレッドを始める", for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 16.0)
+        button.layer.cornerRadius = 24.0
         button.clipsToBounds = true
         return button
     }()
@@ -112,6 +129,7 @@ class AddThreadViewController: UIViewController {
         view.addSubview(tagAreaBorderView)
         view.addSubview(tagAreaView)
         view.addSubview(tagLabel)
+        view.addSubview(firstPostTextView)
         view.addSubview(addTagButton)
         view.addSubview(addButton)
         view.addSubview(closeButton)
@@ -126,7 +144,7 @@ class AddThreadViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        self.updateTagViewConstraints()
+        //        self.updateTagViewConstraints()
     }
     
     
@@ -166,6 +184,13 @@ class AddThreadViewController: UIViewController {
             make.width.equalTo(tagAreaBorderView.frame.width - 30)
         }
         
+        firstPostTextView.snp.makeConstraints { make in
+            make.top.equalTo(tagAreaBorderView.snp.bottom).offset(24)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(tagAreaBorderView)
+            make.height.equalTo(300)
+        }
+        
         addTagButton.snp.makeConstraints { make in
             make.centerY.equalTo(tagAreaBorderView)
             make.right.equalTo(tagAreaBorderView).offset(-10)
@@ -173,7 +198,7 @@ class AddThreadViewController: UIViewController {
         }
         
         addButton.snp.makeConstraints { make in
-            make.top.equalTo(tagAreaView.snp.bottom).offset(50)
+            make.top.equalTo(firstPostTextView.snp.bottom).offset(50)
             make.centerX.equalToSuperview()
             make.width.equalTo(150)
             make.height.equalTo(60)
@@ -187,14 +212,6 @@ class AddThreadViewController: UIViewController {
         
         super.updateViewConstraints()
     }
-    
-//    private func updateTagViewConstraints() {
-//        tagAreaView.snp.remakeConstraints { make in
-//            make.top.equalTo(tagLabel.snp.bottom).offset(24)
-//            make.centerX.equalToSuperview()
-//            make.size.equalTo(tagAreaView.intrinsicContentSize.height)
-//        }
-//    }
     
     private func configureObserver() {
         titleInput.rx.text
@@ -255,6 +272,13 @@ extension AddThreadViewController: TagDelegate {
         self.tagLabel.isHidden = true
         self.tagAreaView.addTag(text.title)
         self.tagsCount += tagsCount
+        
+        db.collection(Const.tag).addDocument(data: ["title": text.title]) { err in
+            if err != nil {
+                print(err!.localizedDescription)
+                return
+            }
+        }
         
         if tagAreaView.intrinsicContentSize.height > tagAreaBorderView.frame.height {
             tagAreaBorderView.snp.remakeConstraints { make in

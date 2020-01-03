@@ -10,22 +10,36 @@ import UIKit
 import TagListView
 import SnapKit
 
-final class ThreadThinTableViewCell: EllipseTableViewCell {
+final class ThreadThinTableViewCell: EllipseTableViewCell, TagListViewDelegate {
     private var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 20.0)
+        label.text = "Siwftプログラミングガイドをみんなで読み込む"
+        label.font = .boldSystemFont(ofSize: 14.0)
+        label.numberOfLines = 0
         return label
     }()
     
     private var startDateLabel: UILabel = {
-        return SubTitleLabel()
+        let label = SubTitleLabel()
+        label.text = "2019/01/21"
+        return label
     }()
     
     private var commentCountLabel: UILabel = {
-        return SubTitleLabel()
+        let label = SubTitleLabel()
+        label.text = "2300"
+        return label
     }()
     
-    private var tagsAreaView = TagListView()
+    lazy var tagAreaView: TagListView = {
+        let view = TagListView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 20, height: 50))
+        view.applyDefault()
+        view.delegate = self
+        view.addTag("Swift")
+        view.addTag("iOS")
+        view.addTag("プログラミング")
+        return view
+    }()
     
     private var emptyButton: UIButton = {
         let button = UIButton()
@@ -38,25 +52,16 @@ final class ThreadThinTableViewCell: EllipseTableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        layer.cornerRadius = 20.0
+        layer.cornerRadius = 26.0
         clipsToBounds = true
+        
+        contentView.backgroundColor = Const.color.whiteSmoke
         
         addSubview(titleLabel)
         addSubview(startDateLabel)
         addSubview(commentCountLabel)
         addSubview(emptyButton)
-        addSubview(tagsAreaView)
-        
-        tagsAreaView.alignment = .left
-        tagsAreaView.cornerRadius = 14.0
-        tagsAreaView.textColor = .white
-        tagsAreaView.borderWidth = 1
-        tagsAreaView.paddingX = 8
-        tagsAreaView.paddingY = 8
-        tagsAreaView.marginX = 10
-        tagsAreaView.marginY = 10
-        tagsAreaView.textFont = UIFont.systemFont(ofSize: 16)
-        tagsAreaView.tagBackgroundColor = .black
+        addSubview(tagAreaView)
         
         configureConstraints()
     }
@@ -74,11 +79,10 @@ final class ThreadThinTableViewCell: EllipseTableViewCell {
     }
     
     private func configureConstraints() {
-        tagsAreaView.frame.size = tagsAreaView.intrinsicContentSize
-        
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(contentView).offset(10)
             make.left.equalTo(contentView).offset(10)
+            make.right.lessThanOrEqualToSuperview().offset(-10)
         }
         
         startDateLabel.snp.makeConstraints { make in
@@ -91,7 +95,7 @@ final class ThreadThinTableViewCell: EllipseTableViewCell {
             make.right.equalTo(contentView).offset(-10)
         }
         
-        tagsAreaView.snp.makeConstraints { make in
+        tagAreaView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
             make.left.equalTo(titleLabel)
             make.right.equalToSuperview().offset(-10)
@@ -99,7 +103,7 @@ final class ThreadThinTableViewCell: EllipseTableViewCell {
         }
 
         emptyButton.snp.makeConstraints { make in
-            make.edges.equalTo(tagsAreaView)
+            make.edges.equalTo(tagAreaView)
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
             make.left.equalTo(titleLabel)
             make.right.equalToSuperview().offset(-10)

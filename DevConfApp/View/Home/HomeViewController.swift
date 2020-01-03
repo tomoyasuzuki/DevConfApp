@@ -38,9 +38,11 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addGradientBackground(firstColor:  Const.color.vividLightBlue, secondColor: Const.color.vividBlue)
+        
+        view.backgroundColor = .white
         
         view.addSubview(tableView)
-        
         view.addSubview(addThreadButton)
         
         addThreadButton.addTarget(self, action: #selector(addThreadButtonDidTap), for: .touchUpInside)
@@ -63,13 +65,11 @@ extension HomeViewController {
 //        navigationItem.title = "急上昇"
 //        navigationItem.largeTitleDisplayMode = .always
 //        navigationController?.navigationBar.prefersLargeTitles = true
-//        navigationController?.navigationBar.tintColor = .white
+//        navigationController?.navigationBar.tintColor = .black
 //        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
     private func configureComponents() {
-        view.backgroundColor = .black
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ThreadThinTableViewCell.self, forCellReuseIdentifier: "ThreadThinTableViewCell")
@@ -78,7 +78,7 @@ extension HomeViewController {
     
     private func configureConstraints() {
         tableView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(10)
+            make.top.equalToSuperview().offset(100)
             make.bottom.equalToSuperview()
             make.right.equalToSuperview().offset(-20)
             make.left.equalToSuperview().offset(20)
@@ -110,7 +110,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 80
     }
     
     private func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -131,5 +131,18 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     private func tableView(tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
         view.tintColor = .clear
+    }
+}
+
+extension UIView{
+    func addGradientBackground(firstColor: UIColor, secondColor: UIColor){
+        clipsToBounds = true
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [firstColor.cgColor, secondColor.cgColor]
+        gradientLayer.frame = self.bounds
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+        print(gradientLayer.frame)
+        self.layer.insertSublayer(gradientLayer, at: 0)
     }
 }
