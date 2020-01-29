@@ -247,6 +247,13 @@ class UserProfileViewController: UIViewController, UIScrollViewDelegate {
             make.right.equalToSuperview().offset(-15)
             make.size.equalTo(20)
         }
+        
+        settingButton.addTarget(self, action: #selector(navigateToSetting), for: .touchUpInside)
+    }
+    
+    @objc func navigateToSetting() {
+        print("++++++++++++++++++++++++++++++++++++++++++=")
+        self.present(UINavigationController(rootViewController: SettingViewController()), animated: true, completion: nil)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

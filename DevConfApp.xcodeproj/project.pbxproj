@@ -42,13 +42,37 @@
 		5747541B23BDFCE600A4569B /* PortFolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747541A23BDFCE600A4569B /* PortFolioView.swift */; };
 		5747541D23BE03AF00A4569B /* PortFolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747541C23BE03AF00A4569B /* PortFolioTableViewCell.swift */; };
 		5747541F23BE09B200A4569B /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747541E23BE09B200A4569B /* DemoViewController.swift */; };
+		5747542323C5EB2200A4569B /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747542223C5EB2100A4569B /* SettingViewController.swift */; };
+		5747542523C5ED4600A4569B /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747542423C5ED4600A4569B /* SettingTableViewCell.swift */; };
+		5747542723C5F61F00A4569B /* CustomTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747542623C5F61F00A4569B /* CustomTableViewHeaderView.swift */; };
+		5747542B23C6226C00A4569B /* ExTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747542A23C6226C00A4569B /* ExTextView.swift */; };
+		5747542D23C6CA3A00A4569B /* SearchRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747542C23C6CA3A00A4569B /* SearchRoomViewController.swift */; };
+		5779214623DAF4E600AF5680 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779214523DAF4E600AF5680 /* ChatListViewController.swift */; };
+		5779214823DAF5FA00AF5680 /* ChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779214723DAF5FA00AF5680 /* ChatListTableViewCell.swift */; };
+		5779214A23DAF78A00AF5680 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779214923DAF78A00AF5680 /* CircleImageView.swift */; };
+		5779214C23DAFBFA00AF5680 /* CircleNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779214B23DAFBFA00AF5680 /* CircleNumberView.swift */; };
+		5779215023DC6C9D00AF5680 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779214F23DC6C9D00AF5680 /* Message.swift */; };
+		5779215223DDCCA100AF5680 /* FMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779215123DDCCA100AF5680 /* FMessage.swift */; };
+		5779215423DDD90700AF5680 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779215323DDD90700AF5680 /* ChatViewController.swift */; };
+		5779215623DDDF2500AF5680 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779215523DDDF2500AF5680 /* ChatViewModel.swift */; };
+		5779215823DDE89800AF5680 /* MessageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779215723DDE89800AF5680 /* MessageRepository.swift */; };
+		5779215A23DEFFDE00AF5680 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779215923DEFFDE00AF5680 /* Chat.swift */; };
+		5779215C23DEFFFA00AF5680 /* FChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779215B23DEFFFA00AF5680 /* FChat.swift */; };
+		5779215E23DF00B600AF5680 /* FUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779215D23DF00B600AF5680 /* FUser.swift */; };
+		5779216023DF047300AF5680 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779215F23DF047300AF5680 /* UserModel.swift */; };
+		5779216223DF29C900AF5680 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779216123DF29C900AF5680 /* AuthViewController.swift */; };
+		5779216423E0AF5A00AF5680 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779216323E0AF5A00AF5680 /* AuthViewModel.swift */; };
+		5779216623E1B93600AF5680 /* BorderTextFeild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779216523E1B93500AF5680 /* BorderTextFeild.swift */; };
+		5779216823E1E44800AF5680 /* IntroPagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779216723E1E44800AF5680 /* IntroPagingViewController.swift */; };
+		5779216B23E1E4D200AF5680 /* IntroFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779216A23E1E4D200AF5680 /* IntroFirstViewController.swift */; };
+		5779216D23E1E4E200AF5680 /* IntroSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779216C23E1E4E200AF5680 /* IntroSecondViewController.swift */; };
+		5779216F23E1E4EF00AF5680 /* IntroThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779216E23E1E4EF00AF5680 /* IntroThirdViewController.swift */; };
 		57AB2ED2238AAB5C0021C67B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2ED1238AAB5C0021C67B /* AppDelegate.swift */; };
 		57AB2ED4238AAB5C0021C67B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2ED3238AAB5C0021C67B /* SceneDelegate.swift */; };
 		57AB2EDB238AAB5E0021C67B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57AB2EDA238AAB5E0021C67B /* Assets.xcassets */; };
 		57AB2EDE238AAB5E0021C67B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57AB2EDC238AAB5E0021C67B /* LaunchScreen.storyboard */; };
 		57AB2EE9238AAB5E0021C67B /* DevConfAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2EE8238AAB5E0021C67B /* DevConfAppTests.swift */; };
 		57AB2EF4238AAB5E0021C67B /* DevConfAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2EF3238AAB5E0021C67B /* DevConfAppUITests.swift */; };
-		57AB2F02238AABC50021C67B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2F01238AABC50021C67B /* UserModel.swift */; };
 		57AB2F06238AABED0021C67B /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2F05238AABED0021C67B /* PostModel.swift */; };
 		57AB2F0A238AAEBB0021C67B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2F09238AAEBB0021C67B /* HomeViewController.swift */; };
 		57AB2F0D238AB37F0021C67B /* ThreadThinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2F0C238AB37F0021C67B /* ThreadThinTableViewCell.swift */; };
@@ -118,6 +142,31 @@
 		5747541A23BDFCE600A4569B /* PortFolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortFolioView.swift; sourceTree = "<group>"; };
 		5747541C23BE03AF00A4569B /* PortFolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortFolioTableViewCell.swift; sourceTree = "<group>"; };
 		5747541E23BE09B200A4569B /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
+		5747542223C5EB2100A4569B /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		5747542423C5ED4600A4569B /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		5747542623C5F61F00A4569B /* CustomTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewHeaderView.swift; sourceTree = "<group>"; };
+		5747542A23C6226C00A4569B /* ExTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExTextView.swift; sourceTree = "<group>"; };
+		5747542C23C6CA3A00A4569B /* SearchRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRoomViewController.swift; sourceTree = "<group>"; };
+		5779214523DAF4E600AF5680 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
+		5779214723DAF5FA00AF5680 /* ChatListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewCell.swift; sourceTree = "<group>"; };
+		5779214923DAF78A00AF5680 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
+		5779214B23DAFBFA00AF5680 /* CircleNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleNumberView.swift; sourceTree = "<group>"; };
+		5779214F23DC6C9D00AF5680 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		5779215123DDCCA100AF5680 /* FMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMessage.swift; sourceTree = "<group>"; };
+		5779215323DDD90700AF5680 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		5779215523DDDF2500AF5680 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		5779215723DDE89800AF5680 /* MessageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRepository.swift; sourceTree = "<group>"; };
+		5779215923DEFFDE00AF5680 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		5779215B23DEFFFA00AF5680 /* FChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FChat.swift; sourceTree = "<group>"; };
+		5779215D23DF00B600AF5680 /* FUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FUser.swift; sourceTree = "<group>"; };
+		5779215F23DF047300AF5680 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		5779216123DF29C900AF5680 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		5779216323E0AF5A00AF5680 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		5779216523E1B93500AF5680 /* BorderTextFeild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderTextFeild.swift; sourceTree = "<group>"; };
+		5779216723E1E44800AF5680 /* IntroPagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPagingViewController.swift; sourceTree = "<group>"; };
+		5779216A23E1E4D200AF5680 /* IntroFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroFirstViewController.swift; sourceTree = "<group>"; };
+		5779216C23E1E4E200AF5680 /* IntroSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroSecondViewController.swift; sourceTree = "<group>"; };
+		5779216E23E1E4EF00AF5680 /* IntroThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroThirdViewController.swift; sourceTree = "<group>"; };
 		57AB2ECE238AAB5C0021C67B /* DevConfApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevConfApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57AB2ED1238AAB5C0021C67B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57AB2ED3238AAB5C0021C67B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,7 +179,6 @@
 		57AB2EEF238AAB5E0021C67B /* DevConfAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DevConfAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		57AB2EF3238AAB5E0021C67B /* DevConfAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevConfAppUITests.swift; sourceTree = "<group>"; };
 		57AB2EF5238AAB5E0021C67B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		57AB2F01238AABC50021C67B /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		57AB2F05238AABED0021C67B /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		57AB2F09238AAEBB0021C67B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		57AB2F0C238AB37F0021C67B /* ThreadThinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadThinTableViewCell.swift; sourceTree = "<group>"; };
@@ -178,8 +226,13 @@
 			children = (
 				5725DBEC238F6710000B5A60 /* ThreadModel.swift */,
 				57AB2F05238AABED0021C67B /* PostModel.swift */,
-				57AB2F01238AABC50021C67B /* UserModel.swift */,
 				574753EE23B8559800A4569B /* TagModel.swift */,
+				5779214F23DC6C9D00AF5680 /* Message.swift */,
+				5779215123DDCCA100AF5680 /* FMessage.swift */,
+				5779215923DEFFDE00AF5680 /* Chat.swift */,
+				5779215B23DEFFFA00AF5680 /* FChat.swift */,
+				5779215D23DF00B600AF5680 /* FUser.swift */,
+				5779215F23DF047300AF5680 /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -190,6 +243,7 @@
 				5725DBF323910AE8000B5A60 /* ThreadRepository.swift */,
 				5725DBFC23927120000B5A60 /* PostRepository.swift */,
 				5725DBF8239270AD000B5A60 /* UserRepository.swift */,
+				5779215723DDE89800AF5680 /* MessageRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -224,6 +278,28 @@
 				574753DE23B7815300A4569B /* Const.swift */,
 			);
 			path = Const;
+			sourceTree = "<group>";
+		};
+		5779216923E1E4AC00AF5680 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				5779216723E1E44800AF5680 /* IntroPagingViewController.swift */,
+				5779216A23E1E4D200AF5680 /* IntroFirstViewController.swift */,
+				5779216C23E1E4E200AF5680 /* IntroSecondViewController.swift */,
+				5779216E23E1E4EF00AF5680 /* IntroThirdViewController.swift */,
+			);
+			path = Intro;
+			sourceTree = "<group>";
+		};
+		5779217223E1EFEA00AF5680 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				5779214523DAF4E600AF5680 /* ChatListViewController.swift */,
+				5779215323DDD90700AF5680 /* ChatViewController.swift */,
+				5779215523DDDF2500AF5680 /* ChatViewModel.swift */,
+				5779214723DAF5FA00AF5680 /* ChatListTableViewCell.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		57AB2EC5238AAB5C0021C67B = {
@@ -308,6 +384,17 @@
 				5747541A23BDFCE600A4569B /* PortFolioView.swift */,
 				5747541C23BE03AF00A4569B /* PortFolioTableViewCell.swift */,
 				5747541E23BE09B200A4569B /* DemoViewController.swift */,
+				5747542223C5EB2100A4569B /* SettingViewController.swift */,
+				5747542423C5ED4600A4569B /* SettingTableViewCell.swift */,
+				5747542623C5F61F00A4569B /* CustomTableViewHeaderView.swift */,
+				5747542C23C6CA3A00A4569B /* SearchRoomViewController.swift */,
+				5779217223E1EFEA00AF5680 /* Chat */,
+				5779214923DAF78A00AF5680 /* CircleImageView.swift */,
+				5779214B23DAFBFA00AF5680 /* CircleNumberView.swift */,
+				5779216123DF29C900AF5680 /* AuthViewController.swift */,
+				5779216323E0AF5A00AF5680 /* AuthViewModel.swift */,
+				5779216523E1B93500AF5680 /* BorderTextFeild.swift */,
+				5779216923E1E4AC00AF5680 /* Intro */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -344,6 +431,7 @@
 				574753FA23B9DB6C00A4569B /* ExUIColor.swift */,
 				5747540623BA565200A4569B /* ExTagListView.swift */,
 				5747541223BCC88300A4569B /* ExUIView.swift */,
+				5747542A23C6226C00A4569B /* ExTextView.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -593,48 +681,72 @@
 			buildActionMask = 2147483647;
 			files = (
 				574753EF23B8559800A4569B /* TagModel.swift in Sources */,
+				5747542D23C6CA3A00A4569B /* SearchRoomViewController.swift in Sources */,
 				574753E523B7982F00A4569B /* UnderBarTextField.swift in Sources */,
+				5779216F23E1E4EF00AF5680 /* IntroThirdViewController.swift in Sources */,
 				57AB2F12238AB55A0021C67B /* SubTitleLabel.swift in Sources */,
+				5779216B23E1E4D200AF5680 /* IntroFirstViewController.swift in Sources */,
 				5747540F23BCC32800A4569B /* UserThreadViewController.swift in Sources */,
 				5725DBF423910AE8000B5A60 /* ThreadRepository.swift in Sources */,
+				5779214C23DAFBFA00AF5680 /* CircleNumberView.swift in Sources */,
+				5747542323C5EB2200A4569B /* SettingViewController.swift in Sources */,
+				5779215C23DEFFFA00AF5680 /* FChat.swift in Sources */,
 				57AB2ED2238AAB5C0021C67B /* AppDelegate.swift in Sources */,
 				5747540923BA6A0400A4569B /* UserProfileViewController.swift in Sources */,
+				5779215423DDD90700AF5680 /* ChatViewController.swift in Sources */,
 				5725DBF723910E5B000B5A60 /* FirebaseError.swift in Sources */,
+				5779216D23E1E4E200AF5680 /* IntroSecondViewController.swift in Sources */,
 				57AB2F06238AABED0021C67B /* PostModel.swift in Sources */,
 				574753FD23B9DF9900A4569B /* GradientButton.swift in Sources */,
 				5725DC01239298D2000B5A60 /* HomeTabViewController.swift in Sources */,
 				574753E323B7923600A4569B /* ExTextField.swift in Sources */,
+				5779216423E0AF5A00AF5680 /* AuthViewModel.swift in Sources */,
 				5747541D23BE03AF00A4569B /* PortFolioTableViewCell.swift in Sources */,
 				5747541723BDFBE300A4569B /* SkillListView.swift in Sources */,
 				574753E723B79E2500A4569B /* AddThreadViewModel.swift in Sources */,
 				5725DBED238F6710000B5A60 /* ThreadModel.swift in Sources */,
 				5725DBFF2392987B000B5A60 /* HomeViewModel.swift in Sources */,
+				5779216623E1B93600AF5680 /* BorderTextFeild.swift in Sources */,
 				57AB2F1A238BCD290021C67B /* ExNavigationController.swift in Sources */,
+				5779215023DC6C9D00AF5680 /* Message.swift in Sources */,
 				57AB2ED4238AAB5C0021C67B /* SceneDelegate.swift in Sources */,
 				5747540523BA55E100A4569B /* ThreadTableViewCell.swift in Sources */,
 				574753F923B9C1E700A4569B /* PaddingTextField.swift in Sources */,
 				5725DBF9239270AD000B5A60 /* UserRepository.swift in Sources */,
 				574753E123B78CD200A4569B /* AddThreadViewController.swift in Sources */,
+				5747542B23C6226C00A4569B /* ExTextView.swift in Sources */,
+				5779216223DF29C900AF5680 /* AuthViewController.swift in Sources */,
 				57AB2F0A238AAEBB0021C67B /* HomeViewController.swift in Sources */,
+				5779215A23DEFFDE00AF5680 /* Chat.swift in Sources */,
+				5779215E23DF00B600AF5680 /* FUser.swift in Sources */,
 				57AB2F10238AB5500021C67B /* PaddingLabel.swift in Sources */,
 				5747541323BCC88300A4569B /* ExUIView.swift in Sources */,
 				57AB2F14238AB6160021C67B /* RadiusLabel.swift in Sources */,
+				5779215823DDE89800AF5680 /* MessageRepository.swift in Sources */,
+				5747542523C5ED4600A4569B /* SettingTableViewCell.swift in Sources */,
 				5747541F23BE09B200A4569B /* DemoViewController.swift in Sources */,
+				5779214A23DAF78A00AF5680 /* CircleImageView.swift in Sources */,
 				5747541923BDFC0F00A4569B /* IntroduceView.swift in Sources */,
+				5747542723C5F61F00A4569B /* CustomTableViewHeaderView.swift in Sources */,
+				5779214623DAF4E600AF5680 /* ChatListViewController.swift in Sources */,
 				5747541523BDFB0A00A4569B /* ProfileListView.swift in Sources */,
+				5779215223DDCCA100AF5680 /* FMessage.swift in Sources */,
 				57AB2F0D238AB37F0021C67B /* ThreadThinTableViewCell.swift in Sources */,
 				5747541123BCC33D00A4569B /* UserCommentViewController.swift in Sources */,
 				5747540723BA565200A4569B /* ExTagListView.swift in Sources */,
 				57AB2F1C238BCE000021C67B /* EllipseTableViewCell.swift in Sources */,
-				57AB2F02238AABC50021C67B /* UserModel.swift in Sources */,
+				5779216823E1E44800AF5680 /* IntroPagingViewController.swift in Sources */,
 				5747540D23BCC26200A4569B /* UserTabMainViewController.swift in Sources */,
+				5779214823DAF5FA00AF5680 /* ChatListTableViewCell.swift in Sources */,
 				574753EB23B7B9A600A4569B /* AddTagViewController.swift in Sources */,
+				5779215623DDDF2500AF5680 /* ChatViewModel.swift in Sources */,
 				5725DBFD23927120000B5A60 /* PostRepository.swift in Sources */,
 				574753F723B9931000A4569B /* TagTableViewCell.swift in Sources */,
 				5725DC0723929D70000B5A60 /* ExReactive.swift in Sources */,
 				574753DF23B7815300A4569B /* Const.swift in Sources */,
 				5747541B23BDFCE600A4569B /* PortFolioView.swift in Sources */,
 				574753FB23B9DB6C00A4569B /* ExUIColor.swift in Sources */,
+				5779216023DF047300AF5680 /* UserModel.swift in Sources */,
 				574753ED23B851B100A4569B /* AddTagViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

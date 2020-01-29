@@ -16,9 +16,9 @@ class IntroduceView: UIView {
         return label
     }()
     
-    let textView: UITextView = {
-        let view = UITextView()
-        view.text = "自己紹介を記入しましょう"
+    let textView: CustomTextView = {
+        let view = CustomTextView()
+        view.placeholder.text = "自己紹介を記入しましょう"
         view.backgroundColor = Const.color.whiteSmoke
         view.layer.cornerRadius = 14.0
         view.clipsToBounds = true
