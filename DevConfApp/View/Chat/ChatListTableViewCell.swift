@@ -30,7 +30,9 @@ class ChatListTableViewCell: UITableViewCell {
     }()
     
     var unreadMessageCountView: UIView = {
-        let view = CircleNumberView()
+        let view = GradientCircleView(frame: CGRect(x: 0, y: 0, width: 25, height: 25),
+                                      startColor: Const.color.vividLightBlue.cgColor,
+                                      endColor: Const.color.vividBlue.cgColor)
         view.backgroundColor = Const.color.vividBlue
         view.numberLabel.textColor = .white
         view.numberLabel.text = "4"
@@ -78,7 +80,7 @@ class ChatListTableViewCell: UITableViewCell {
         unreadMessageCountView.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(-12)
             make.centerY.equalToSuperview()
-            make.size.equalTo(30)
+            make.size.equalTo(25)
         }
     }
 }

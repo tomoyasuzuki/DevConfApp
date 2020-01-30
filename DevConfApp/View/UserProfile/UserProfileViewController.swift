@@ -122,9 +122,6 @@ class UserProfileViewController: UIViewController, UIScrollViewDelegate {
         
         scrollView.contentInsetAdjustmentBehavior = .never
         
-        //        let textContainer = UIView()
-        
-        //        let imageContainer = UIView()
         imageContainer.backgroundColor = .darkGray
         
         view.addSubview(scrollView)
@@ -252,7 +249,6 @@ class UserProfileViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @objc func navigateToSetting() {
-        print("++++++++++++++++++++++++++++++++++++++++++=")
         self.present(UINavigationController(rootViewController: SettingViewController()), animated: true, completion: nil)
     }
     

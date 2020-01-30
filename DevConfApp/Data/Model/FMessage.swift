@@ -61,23 +61,23 @@ struct FMessage {
     let imageUrl: String?
     let audioUrl: String?
     let messageKind: String
-    let seenCount: Int
+    let readUsers: [String] // idを格納
     
     func convertToDic() -> [String: Any] {
         return ["chatId": self.chatId, "senderId": self.senderId, "senderName": self.senderName,
                 "sentDate": self.sentDate, "text": self.text, "imageUrl": self.imageUrl, "audioUrl": self.audioUrl,
-                "messageKind": self.messageKind, "seenCount": self.seenCount]
+                "messageKind": self.messageKind, "readUsers": self.readUsers]
     }
     
     // app -> firebase
     init(chatId: String, senderId: String, senderName: String, sentDate: Date, text: String = "",
-         imageUrl: String = "", audioUrl: String = "", messageKind: String = "text", seenCount: Int = 0) {
+         imageUrl: String = "", audioUrl: String = "", messageKind: String = "text", readUsers: [String]) {
         self.chatId = chatId
         self.senderId = senderId
         self.senderName = senderName
         self.sentDate = Timestamp(date: sentDate)
         self.messageKind = messageKind
-        self.seenCount = seenCount
+        self.readUsers = readUsers
         self.text = text
         self.imageUrl = imageUrl
         self.audioUrl = audioUrl
@@ -91,13 +91,13 @@ struct FMessage {
             let senderId = data["senderId"] as? String,
             let senderName = data["senderName"] as? String,
             let sentDate = data["sentDate"] as? Timestamp,
-            let seenCount = data["seenCount"] as? Int else { return nil }
+            let readUsers = data["readUsers"] as? [String] else { return nil }
         
         self.chatId = chatId
         self.senderId = senderId
         self.senderName = senderName
         self.sentDate = sentDate
-        self.seenCount = seenCount
+        self.readUsers = readUsers
         
         if let text = data["text"] as? String, text != "", !text.isEmpty, text.count != 0 {
             self.text = text
@@ -142,7 +142,7 @@ struct FMessage {
         // この時点ではmessageIdは何も入れない
         // firebaseのdocumentIdがmessageIdになるため
         return Message(sender: Sender(senderId: self.senderId, displayName: self.senderName), chatId: self.chatId,
-                       messageId: "", sentDate: self.sentDate.dateValue(), kind: messageKind, seenCount: self.seenCount)
+                       messageId: "", sentDate: self.sentDate.dateValue(), kind: messageKind, readUsers: self.readUsers)
     }
 
 }

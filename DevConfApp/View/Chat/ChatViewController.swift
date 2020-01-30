@@ -78,7 +78,7 @@ extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, Messag
         guard let currentUser = self.viewModel.currentUser else { return }
         
         let message = FMessage(chatId: self.chatId, senderId: currentUser.userId, senderName: currentUser.userName,
-                               sentDate: Date(), text: text, imageUrl: "", audioUrl: "", messageKind: "text", seenCount: 0)
+                               sentDate: Date(), text: text, imageUrl: "", audioUrl: "", messageKind: "text", readUsers: [currentUser.userId])
         self.messageDidChange.onNext(.added(message.convertToDic()))
     }
     
@@ -90,14 +90,12 @@ extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, Messag
     // メッセージの背景色を変更している（デフォルトは自分：緑、相手：グレー）
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
         return isFromCurrentSender(message: message) ?
-            UIColor(red: 69/255, green: 193/255, blue: 89/255, alpha: 1) :
+            Const.color.vividLightBlue :
             UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
     }
 
-    // メッセージの枠にしっぽを付ける
     func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
-        let corner: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
-        return .bubbleTail(corner, .curved)
+        return .bubble
     }
     
     func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
@@ -113,16 +111,26 @@ extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, Messag
     
     func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         if let message = message as? Message {
-            return NSAttributedString(
-                string: "既読 \(message.seenCount)",
+            if message.readUsers.count == 0 {
+                return NSAttributedString(
+                string: "未読",
                 attributes: [.font: UIFont.preferredFont(forTextStyle: .caption2), .foregroundColor: UIColor.gray])
+            } else {
+                return NSAttributedString(
+                    string: "既読 \(message.readUsers.count)",
+                attributes: [.font: UIFont.preferredFont(forTextStyle: .caption2), .foregroundColor: UIColor.gray])
+            }
         } else {
             return nil
         }
     }
     
     func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-        return 16
+        if isFromCurrentSender(message: message) {
+            return 0
+        } else {
+            return 16
+        }
     }
     
     func messageBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {

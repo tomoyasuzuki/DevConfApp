@@ -84,7 +84,9 @@ final class UserRepository {
                 if let err = err {
                     observer.onNext(.failure(err))
                 } else if let result = result {
-                    let user = UserModel(userId: result.user.uid, userName: result.user.uid, profileImageUrl: "", githubUrl: "", messages: [], chats: [])
+                    let user = UserModel(userId: result.user.uid, userName: result.user.uid, profileImageUrl: "",
+                                         backgroundImageUrl: "", githubUrl: "", profession: "", tags: [],
+                                         introduceText: "", works: [], messages: [], chats: [])
                     let data = user.convertToDic()
                     self.db.collection("user").document(result.user.uid).setData(data) { err in
                         if err != nil {

@@ -18,7 +18,11 @@ class ChatListViewController: UIViewController {
         let bar = UISearchBar()
         bar.barTintColor = .black
         bar.layer.borderWidth = 0
-        bar.placeholder = "検索"
+        bar.searchTextField.attributedPlaceholder = NSAttributedString(string: "検索", attributes: [.foregroundColor: UIColor.white])
+        bar.searchTextField.textColor = .white
+        bar.searchTextField.backgroundColor = .darkGray
+        bar.searchTextField.tintColor = .black
+        bar.searchTextField.leftView?.tintColor = .black
         return bar
     }()
     
@@ -44,10 +48,13 @@ class ChatListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.navigationItem.title = "Chats"
         self.navigationController?.navigationBar.barTintColor = .black
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont.boldSystemFont(ofSize: 20.0)]
         self.navigationController?.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "編集", style: UIBarButtonItem.Style.plain, target: self, action: #selector(editChatList))
+        self.navigationItem.leftBarButtonItem?.tintColor = .white
     }
     
     @objc func editChatList() {
@@ -55,14 +62,12 @@ class ChatListViewController: UIViewController {
     }
     
     private func configureConstraints() {
-        let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
-        let navHeight: CGFloat = (navigationController != nil) ? navigationController!.navigationBar.frame.size.height : 0
+//        let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
+//        let navHeight: CGFloat = (navigationController != nil) ? navigationController!.navigationBar.frame.size.height : 0
         let tabBarHeight: CGFloat = (self.tabBarController != nil) ? tabBarController!.tabBar.frame.size.height : 0
         
-        print(navHeight)
-        
         searchBar.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(statusBarHeight + navHeight)
+            make.top.equalToSuperview()
             make.right.left.equalToSuperview()
         }
         

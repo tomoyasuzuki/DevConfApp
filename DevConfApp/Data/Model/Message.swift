@@ -21,15 +21,15 @@ struct Message: MessageType {
     
     var kind: MessageKind
     
-    var seenCount: Int
+    var readUsers: [String]
     
-    init(sender: SenderType, chatId: String, messageId: String, sentDate: Date, kind: MessageKind, seenCount: Int) {
+    init(sender: SenderType, chatId: String, messageId: String, sentDate: Date, kind: MessageKind, readUsers: [String]) {
         self.sender = sender
         self.chatId = chatId
         self.messageId = messageId
         self.sentDate = sentDate
         self.kind = kind
-        self.seenCount = seenCount
+        self.readUsers = readUsers
     }
     
     func convertToDic() -> [String: Any] {
@@ -56,6 +56,6 @@ struct Message: MessageType {
         
         return ["chatId": self.chatId, "senderId": self.sender.senderId, "senderName": self.sender.displayName,
                 "sentDate": self.sentDate, "text": text, "imageUrl": imageUrl,
-                "audioUrl": audioUrl, "messageKind": messageKind, "seenCount": self.seenCount]
+                "audioUrl": audioUrl, "messageKind": messageKind, "readUsers": self.readUsers]
     }
 }

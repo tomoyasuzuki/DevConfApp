@@ -8,45 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		468826A813FDD5AFFA19053C /* Pods_DevConfAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C340A714F67538B462C9383 /* Pods_DevConfAppUITests.framework */; };
-		5725DBED238F6710000B5A60 /* ThreadModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725DBEC238F6710000B5A60 /* ThreadModel.swift */; };
+		5721ECE123E229190086DF21 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5721ECE023E229190086DF21 /* GradientView.swift */; };
+		5721ECE323E229920086DF21 /* GradientCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5721ECE223E229920086DF21 /* GradientCircleView.swift */; };
+		5721ECE623E28FE60086DF21 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5721ECE523E28FE60086DF21 /* UserProfileViewModel.swift */; };
+		5721ECE823E3044C0086DF21 /* TopTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5721ECE723E3044C0086DF21 /* TopTabViewController.swift */; };
 		5725DBF22391075D000B5A60 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5725DBF12391075D000B5A60 /* GoogleService-Info.plist */; };
-		5725DBF423910AE8000B5A60 /* ThreadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725DBF323910AE8000B5A60 /* ThreadRepository.swift */; };
 		5725DBF723910E5B000B5A60 /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725DBF623910E5B000B5A60 /* FirebaseError.swift */; };
 		5725DBF9239270AD000B5A60 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725DBF8239270AD000B5A60 /* UserRepository.swift */; };
-		5725DBFD23927120000B5A60 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725DBFC23927120000B5A60 /* PostRepository.swift */; };
-		5725DBFF2392987B000B5A60 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725DBFE2392987B000B5A60 /* HomeViewModel.swift */; };
-		5725DC01239298D2000B5A60 /* HomeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725DC00239298D2000B5A60 /* HomeTabViewController.swift */; };
 		5725DC0723929D70000B5A60 /* ExReactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725DC0623929D70000B5A60 /* ExReactive.swift */; };
 		574753DF23B7815300A4569B /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753DE23B7815300A4569B /* Const.swift */; };
-		574753E123B78CD200A4569B /* AddThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753E023B78CD200A4569B /* AddThreadViewController.swift */; };
 		574753E323B7923600A4569B /* ExTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753E223B7923600A4569B /* ExTextField.swift */; };
 		574753E523B7982F00A4569B /* UnderBarTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753E423B7982F00A4569B /* UnderBarTextField.swift */; };
-		574753E723B79E2500A4569B /* AddThreadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753E623B79E2500A4569B /* AddThreadViewModel.swift */; };
-		574753EB23B7B9A600A4569B /* AddTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753EA23B7B9A600A4569B /* AddTagViewController.swift */; };
-		574753ED23B851B100A4569B /* AddTagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753EC23B851B100A4569B /* AddTagViewModel.swift */; };
-		574753EF23B8559800A4569B /* TagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753EE23B8559800A4569B /* TagModel.swift */; };
 		574753F723B9931000A4569B /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753F623B9931000A4569B /* TagTableViewCell.swift */; };
 		574753F923B9C1E700A4569B /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753F823B9C1E600A4569B /* PaddingTextField.swift */; };
 		574753FB23B9DB6C00A4569B /* ExUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753FA23B9DB6C00A4569B /* ExUIColor.swift */; };
 		574753FD23B9DF9900A4569B /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753FC23B9DF9900A4569B /* GradientButton.swift */; };
-		5747540523BA55E100A4569B /* ThreadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747540423BA55E100A4569B /* ThreadTableViewCell.swift */; };
 		5747540723BA565200A4569B /* ExTagListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747540623BA565200A4569B /* ExTagListView.swift */; };
 		5747540923BA6A0400A4569B /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747540823BA6A0400A4569B /* UserProfileViewController.swift */; };
-		5747540D23BCC26200A4569B /* UserTabMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747540C23BCC26100A4569B /* UserTabMainViewController.swift */; };
-		5747540F23BCC32800A4569B /* UserThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747540E23BCC32800A4569B /* UserThreadViewController.swift */; };
-		5747541123BCC33D00A4569B /* UserCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747541023BCC33D00A4569B /* UserCommentViewController.swift */; };
 		5747541323BCC88300A4569B /* ExUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747541223BCC88300A4569B /* ExUIView.swift */; };
 		5747541523BDFB0A00A4569B /* ProfileListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747541423BDFB0A00A4569B /* ProfileListView.swift */; };
 		5747541723BDFBE300A4569B /* SkillListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747541623BDFBE300A4569B /* SkillListView.swift */; };
 		5747541923BDFC0F00A4569B /* IntroduceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747541823BDFC0F00A4569B /* IntroduceView.swift */; };
 		5747541B23BDFCE600A4569B /* PortFolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747541A23BDFCE600A4569B /* PortFolioView.swift */; };
 		5747541D23BE03AF00A4569B /* PortFolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747541C23BE03AF00A4569B /* PortFolioTableViewCell.swift */; };
-		5747541F23BE09B200A4569B /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747541E23BE09B200A4569B /* DemoViewController.swift */; };
 		5747542323C5EB2200A4569B /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747542223C5EB2100A4569B /* SettingViewController.swift */; };
 		5747542523C5ED4600A4569B /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747542423C5ED4600A4569B /* SettingTableViewCell.swift */; };
 		5747542723C5F61F00A4569B /* CustomTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747542623C5F61F00A4569B /* CustomTableViewHeaderView.swift */; };
 		5747542B23C6226C00A4569B /* ExTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747542A23C6226C00A4569B /* ExTextView.swift */; };
-		5747542D23C6CA3A00A4569B /* SearchRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747542C23C6CA3A00A4569B /* SearchRoomViewController.swift */; };
 		5779214623DAF4E600AF5680 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779214523DAF4E600AF5680 /* ChatListViewController.swift */; };
 		5779214823DAF5FA00AF5680 /* ChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779214723DAF5FA00AF5680 /* ChatListTableViewCell.swift */; };
 		5779214A23DAF78A00AF5680 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779214923DAF78A00AF5680 /* CircleImageView.swift */; };
@@ -73,9 +61,6 @@
 		57AB2EDE238AAB5E0021C67B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57AB2EDC238AAB5E0021C67B /* LaunchScreen.storyboard */; };
 		57AB2EE9238AAB5E0021C67B /* DevConfAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2EE8238AAB5E0021C67B /* DevConfAppTests.swift */; };
 		57AB2EF4238AAB5E0021C67B /* DevConfAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2EF3238AAB5E0021C67B /* DevConfAppUITests.swift */; };
-		57AB2F06238AABED0021C67B /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2F05238AABED0021C67B /* PostModel.swift */; };
-		57AB2F0A238AAEBB0021C67B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2F09238AAEBB0021C67B /* HomeViewController.swift */; };
-		57AB2F0D238AB37F0021C67B /* ThreadThinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2F0C238AB37F0021C67B /* ThreadThinTableViewCell.swift */; };
 		57AB2F10238AB5500021C67B /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2F0F238AB5500021C67B /* PaddingLabel.swift */; };
 		57AB2F12238AB55A0021C67B /* SubTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2F11238AB55A0021C67B /* SubTitleLabel.swift */; };
 		57AB2F14238AB6160021C67B /* RadiusLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB2F13238AB6160021C67B /* RadiusLabel.swift */; };
@@ -108,45 +93,33 @@
 		2548AAF322BF5091ABD59874 /* Pods-DevConfAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevConfAppTests.debug.xcconfig"; path = "Target Support Files/Pods-DevConfAppTests/Pods-DevConfAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3C340A714F67538B462C9383 /* Pods_DevConfAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DevConfAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F7B1CC109CD3332DA2B5B2A /* Pods-DevConfAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevConfAppTests.release.xcconfig"; path = "Target Support Files/Pods-DevConfAppTests/Pods-DevConfAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		5725DBEC238F6710000B5A60 /* ThreadModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadModel.swift; sourceTree = "<group>"; };
+		5721ECE023E229190086DF21 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		5721ECE223E229920086DF21 /* GradientCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientCircleView.swift; sourceTree = "<group>"; };
+		5721ECE523E28FE60086DF21 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
+		5721ECE723E3044C0086DF21 /* TopTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabViewController.swift; sourceTree = "<group>"; };
 		5725DBF12391075D000B5A60 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		5725DBF323910AE8000B5A60 /* ThreadRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadRepository.swift; sourceTree = "<group>"; };
 		5725DBF623910E5B000B5A60 /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 		5725DBF8239270AD000B5A60 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
-		5725DBFC23927120000B5A60 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
-		5725DBFE2392987B000B5A60 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		5725DC00239298D2000B5A60 /* HomeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewController.swift; sourceTree = "<group>"; };
 		5725DC0623929D70000B5A60 /* ExReactive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExReactive.swift; sourceTree = "<group>"; };
 		574753DE23B7815300A4569B /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
-		574753E023B78CD200A4569B /* AddThreadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThreadViewController.swift; sourceTree = "<group>"; };
 		574753E223B7923600A4569B /* ExTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExTextField.swift; sourceTree = "<group>"; };
 		574753E423B7982F00A4569B /* UnderBarTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderBarTextField.swift; sourceTree = "<group>"; };
-		574753E623B79E2500A4569B /* AddThreadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThreadViewModel.swift; sourceTree = "<group>"; };
-		574753EA23B7B9A600A4569B /* AddTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagViewController.swift; sourceTree = "<group>"; };
-		574753EC23B851B100A4569B /* AddTagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagViewModel.swift; sourceTree = "<group>"; };
-		574753EE23B8559800A4569B /* TagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagModel.swift; sourceTree = "<group>"; };
 		574753F623B9931000A4569B /* TagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTableViewCell.swift; sourceTree = "<group>"; };
 		574753F823B9C1E600A4569B /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		574753FA23B9DB6C00A4569B /* ExUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExUIColor.swift; sourceTree = "<group>"; };
 		574753FC23B9DF9900A4569B /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
-		5747540423BA55E100A4569B /* ThreadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadTableViewCell.swift; sourceTree = "<group>"; };
 		5747540623BA565200A4569B /* ExTagListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExTagListView.swift; sourceTree = "<group>"; };
 		5747540823BA6A0400A4569B /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
-		5747540C23BCC26100A4569B /* UserTabMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTabMainViewController.swift; sourceTree = "<group>"; };
-		5747540E23BCC32800A4569B /* UserThreadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserThreadViewController.swift; sourceTree = "<group>"; };
-		5747541023BCC33D00A4569B /* UserCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCommentViewController.swift; sourceTree = "<group>"; };
 		5747541223BCC88300A4569B /* ExUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExUIView.swift; sourceTree = "<group>"; };
 		5747541423BDFB0A00A4569B /* ProfileListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileListView.swift; sourceTree = "<group>"; };
 		5747541623BDFBE300A4569B /* SkillListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillListView.swift; sourceTree = "<group>"; };
 		5747541823BDFC0F00A4569B /* IntroduceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceView.swift; sourceTree = "<group>"; };
 		5747541A23BDFCE600A4569B /* PortFolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortFolioView.swift; sourceTree = "<group>"; };
 		5747541C23BE03AF00A4569B /* PortFolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortFolioTableViewCell.swift; sourceTree = "<group>"; };
-		5747541E23BE09B200A4569B /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		5747542223C5EB2100A4569B /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		5747542423C5ED4600A4569B /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		5747542623C5F61F00A4569B /* CustomTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewHeaderView.swift; sourceTree = "<group>"; };
 		5747542A23C6226C00A4569B /* ExTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExTextView.swift; sourceTree = "<group>"; };
-		5747542C23C6CA3A00A4569B /* SearchRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRoomViewController.swift; sourceTree = "<group>"; };
 		5779214523DAF4E600AF5680 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		5779214723DAF5FA00AF5680 /* ChatListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewCell.swift; sourceTree = "<group>"; };
 		5779214923DAF78A00AF5680 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
@@ -179,9 +152,6 @@
 		57AB2EEF238AAB5E0021C67B /* DevConfAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DevConfAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		57AB2EF3238AAB5E0021C67B /* DevConfAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevConfAppUITests.swift; sourceTree = "<group>"; };
 		57AB2EF5238AAB5E0021C67B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		57AB2F05238AABED0021C67B /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
-		57AB2F09238AAEBB0021C67B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		57AB2F0C238AB37F0021C67B /* ThreadThinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadThinTableViewCell.swift; sourceTree = "<group>"; };
 		57AB2F0F238AB5500021C67B /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		57AB2F11238AB55A0021C67B /* SubTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTitleLabel.swift; sourceTree = "<group>"; };
 		57AB2F13238AB6160021C67B /* RadiusLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusLabel.swift; sourceTree = "<group>"; };
@@ -221,12 +191,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5721ECE423E28B350086DF21 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				5747540823BA6A0400A4569B /* UserProfileViewController.swift */,
+				5721ECE523E28FE60086DF21 /* UserProfileViewModel.swift */,
+				5747541423BDFB0A00A4569B /* ProfileListView.swift */,
+				5747541623BDFBE300A4569B /* SkillListView.swift */,
+				5747541823BDFC0F00A4569B /* IntroduceView.swift */,
+				5747541A23BDFCE600A4569B /* PortFolioView.swift */,
+				5747541C23BE03AF00A4569B /* PortFolioTableViewCell.swift */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
 		5725DBEE238F67AB000B5A60 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5725DBEC238F6710000B5A60 /* ThreadModel.swift */,
-				57AB2F05238AABED0021C67B /* PostModel.swift */,
-				574753EE23B8559800A4569B /* TagModel.swift */,
 				5779214F23DC6C9D00AF5680 /* Message.swift */,
 				5779215123DDCCA100AF5680 /* FMessage.swift */,
 				5779215923DEFFDE00AF5680 /* Chat.swift */,
@@ -240,8 +221,6 @@
 		5725DBF0238F69EE000B5A60 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				5725DBF323910AE8000B5A60 /* ThreadRepository.swift */,
-				5725DBFC23927120000B5A60 /* PostRepository.swift */,
 				5725DBF8239270AD000B5A60 /* UserRepository.swift */,
 				5779215723DDE89800AF5680 /* MessageRepository.swift */,
 			);
@@ -259,15 +238,7 @@
 		5725DC0223929A8B000B5A60 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				57AB2F09238AAEBB0021C67B /* HomeViewController.swift */,
-				5725DC00239298D2000B5A60 /* HomeTabViewController.swift */,
-				5725DBFE2392987B000B5A60 /* HomeViewModel.swift */,
-				574753E023B78CD200A4569B /* AddThreadViewController.swift */,
-				574753E623B79E2500A4569B /* AddThreadViewModel.swift */,
-				574753EA23B7B9A600A4569B /* AddTagViewController.swift */,
-				574753EC23B851B100A4569B /* AddTagViewModel.swift */,
-				574753F823B9C1E600A4569B /* PaddingTextField.swift */,
-				574753FC23B9DF9900A4569B /* GradientButton.swift */,
+				5721ECE723E3044C0086DF21 /* TopTabViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -374,26 +345,13 @@
 			isa = PBXGroup;
 			children = (
 				5725DC0223929A8B000B5A60 /* Home */,
-				5747540823BA6A0400A4569B /* UserProfileViewController.swift */,
-				5747540C23BCC26100A4569B /* UserTabMainViewController.swift */,
-				5747540E23BCC32800A4569B /* UserThreadViewController.swift */,
-				5747541023BCC33D00A4569B /* UserCommentViewController.swift */,
-				5747541423BDFB0A00A4569B /* ProfileListView.swift */,
-				5747541623BDFBE300A4569B /* SkillListView.swift */,
-				5747541823BDFC0F00A4569B /* IntroduceView.swift */,
-				5747541A23BDFCE600A4569B /* PortFolioView.swift */,
-				5747541C23BE03AF00A4569B /* PortFolioTableViewCell.swift */,
-				5747541E23BE09B200A4569B /* DemoViewController.swift */,
+				5721ECE423E28B350086DF21 /* UserProfile */,
 				5747542223C5EB2100A4569B /* SettingViewController.swift */,
 				5747542423C5ED4600A4569B /* SettingTableViewCell.swift */,
 				5747542623C5F61F00A4569B /* CustomTableViewHeaderView.swift */,
-				5747542C23C6CA3A00A4569B /* SearchRoomViewController.swift */,
 				5779217223E1EFEA00AF5680 /* Chat */,
-				5779214923DAF78A00AF5680 /* CircleImageView.swift */,
-				5779214B23DAFBFA00AF5680 /* CircleNumberView.swift */,
 				5779216123DF29C900AF5680 /* AuthViewController.swift */,
 				5779216323E0AF5A00AF5680 /* AuthViewModel.swift */,
-				5779216523E1B93500AF5680 /* BorderTextFeild.swift */,
 				5779216923E1E4AC00AF5680 /* Intro */,
 			);
 			path = View;
@@ -403,7 +361,6 @@
 			isa = PBXGroup;
 			children = (
 				57AB2F0E238AB3E50021C67B /* Common */,
-				57AB2F0C238AB37F0021C67B /* ThreadThinTableViewCell.swift */,
 				57AB2F1B238BCE000021C67B /* EllipseTableViewCell.swift */,
 			);
 			path = Components;
@@ -412,12 +369,18 @@
 		57AB2F0E238AB3E50021C67B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				5779214923DAF78A00AF5680 /* CircleImageView.swift */,
+				5721ECE223E229920086DF21 /* GradientCircleView.swift */,
+				5779214B23DAFBFA00AF5680 /* CircleNumberView.swift */,
+				5721ECE023E229190086DF21 /* GradientView.swift */,
+				574753F823B9C1E600A4569B /* PaddingTextField.swift */,
 				57AB2F0F238AB5500021C67B /* PaddingLabel.swift */,
+				574753FC23B9DF9900A4569B /* GradientButton.swift */,
 				57AB2F11238AB55A0021C67B /* SubTitleLabel.swift */,
+				5779216523E1B93500AF5680 /* BorderTextFeild.swift */,
 				57AB2F13238AB6160021C67B /* RadiusLabel.swift */,
 				574753E423B7982F00A4569B /* UnderBarTextField.swift */,
 				574753F623B9931000A4569B /* TagTableViewCell.swift */,
-				5747540423BA55E100A4569B /* ThreadTableViewCell.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -680,14 +643,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				574753EF23B8559800A4569B /* TagModel.swift in Sources */,
-				5747542D23C6CA3A00A4569B /* SearchRoomViewController.swift in Sources */,
 				574753E523B7982F00A4569B /* UnderBarTextField.swift in Sources */,
 				5779216F23E1E4EF00AF5680 /* IntroThirdViewController.swift in Sources */,
 				57AB2F12238AB55A0021C67B /* SubTitleLabel.swift in Sources */,
 				5779216B23E1E4D200AF5680 /* IntroFirstViewController.swift in Sources */,
-				5747540F23BCC32800A4569B /* UserThreadViewController.swift in Sources */,
-				5725DBF423910AE8000B5A60 /* ThreadRepository.swift in Sources */,
 				5779214C23DAFBFA00AF5680 /* CircleNumberView.swift in Sources */,
 				5747542323C5EB2200A4569B /* SettingViewController.swift in Sources */,
 				5779215C23DEFFFA00AF5680 /* FChat.swift in Sources */,
@@ -696,27 +655,19 @@
 				5779215423DDD90700AF5680 /* ChatViewController.swift in Sources */,
 				5725DBF723910E5B000B5A60 /* FirebaseError.swift in Sources */,
 				5779216D23E1E4E200AF5680 /* IntroSecondViewController.swift in Sources */,
-				57AB2F06238AABED0021C67B /* PostModel.swift in Sources */,
 				574753FD23B9DF9900A4569B /* GradientButton.swift in Sources */,
-				5725DC01239298D2000B5A60 /* HomeTabViewController.swift in Sources */,
 				574753E323B7923600A4569B /* ExTextField.swift in Sources */,
 				5779216423E0AF5A00AF5680 /* AuthViewModel.swift in Sources */,
 				5747541D23BE03AF00A4569B /* PortFolioTableViewCell.swift in Sources */,
 				5747541723BDFBE300A4569B /* SkillListView.swift in Sources */,
-				574753E723B79E2500A4569B /* AddThreadViewModel.swift in Sources */,
-				5725DBED238F6710000B5A60 /* ThreadModel.swift in Sources */,
-				5725DBFF2392987B000B5A60 /* HomeViewModel.swift in Sources */,
 				5779216623E1B93600AF5680 /* BorderTextFeild.swift in Sources */,
 				57AB2F1A238BCD290021C67B /* ExNavigationController.swift in Sources */,
 				5779215023DC6C9D00AF5680 /* Message.swift in Sources */,
 				57AB2ED4238AAB5C0021C67B /* SceneDelegate.swift in Sources */,
-				5747540523BA55E100A4569B /* ThreadTableViewCell.swift in Sources */,
 				574753F923B9C1E700A4569B /* PaddingTextField.swift in Sources */,
 				5725DBF9239270AD000B5A60 /* UserRepository.swift in Sources */,
-				574753E123B78CD200A4569B /* AddThreadViewController.swift in Sources */,
 				5747542B23C6226C00A4569B /* ExTextView.swift in Sources */,
 				5779216223DF29C900AF5680 /* AuthViewController.swift in Sources */,
-				57AB2F0A238AAEBB0021C67B /* HomeViewController.swift in Sources */,
 				5779215A23DEFFDE00AF5680 /* Chat.swift in Sources */,
 				5779215E23DF00B600AF5680 /* FUser.swift in Sources */,
 				57AB2F10238AB5500021C67B /* PaddingLabel.swift in Sources */,
@@ -724,30 +675,27 @@
 				57AB2F14238AB6160021C67B /* RadiusLabel.swift in Sources */,
 				5779215823DDE89800AF5680 /* MessageRepository.swift in Sources */,
 				5747542523C5ED4600A4569B /* SettingTableViewCell.swift in Sources */,
-				5747541F23BE09B200A4569B /* DemoViewController.swift in Sources */,
 				5779214A23DAF78A00AF5680 /* CircleImageView.swift in Sources */,
 				5747541923BDFC0F00A4569B /* IntroduceView.swift in Sources */,
+				5721ECE123E229190086DF21 /* GradientView.swift in Sources */,
 				5747542723C5F61F00A4569B /* CustomTableViewHeaderView.swift in Sources */,
+				5721ECE623E28FE60086DF21 /* UserProfileViewModel.swift in Sources */,
 				5779214623DAF4E600AF5680 /* ChatListViewController.swift in Sources */,
 				5747541523BDFB0A00A4569B /* ProfileListView.swift in Sources */,
 				5779215223DDCCA100AF5680 /* FMessage.swift in Sources */,
-				57AB2F0D238AB37F0021C67B /* ThreadThinTableViewCell.swift in Sources */,
-				5747541123BCC33D00A4569B /* UserCommentViewController.swift in Sources */,
 				5747540723BA565200A4569B /* ExTagListView.swift in Sources */,
+				5721ECE823E3044C0086DF21 /* TopTabViewController.swift in Sources */,
 				57AB2F1C238BCE000021C67B /* EllipseTableViewCell.swift in Sources */,
 				5779216823E1E44800AF5680 /* IntroPagingViewController.swift in Sources */,
-				5747540D23BCC26200A4569B /* UserTabMainViewController.swift in Sources */,
 				5779214823DAF5FA00AF5680 /* ChatListTableViewCell.swift in Sources */,
-				574753EB23B7B9A600A4569B /* AddTagViewController.swift in Sources */,
+				5721ECE323E229920086DF21 /* GradientCircleView.swift in Sources */,
 				5779215623DDDF2500AF5680 /* ChatViewModel.swift in Sources */,
-				5725DBFD23927120000B5A60 /* PostRepository.swift in Sources */,
 				574753F723B9931000A4569B /* TagTableViewCell.swift in Sources */,
 				5725DC0723929D70000B5A60 /* ExReactive.swift in Sources */,
 				574753DF23B7815300A4569B /* Const.swift in Sources */,
 				5747541B23BDFCE600A4569B /* PortFolioView.swift in Sources */,
 				574753FB23B9DB6C00A4569B /* ExUIColor.swift in Sources */,
 				5779216023DF047300AF5680 /* UserModel.swift in Sources */,
-				574753ED23B851B100A4569B /* AddTagViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
