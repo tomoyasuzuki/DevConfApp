@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: scene)
         self.window = window
-        window.rootViewController = UINavigationController(rootViewController: TopTabViewController())
+        window.rootViewController = CreateNewChatViewController()
         
         window.makeKeyAndVisible()
     }

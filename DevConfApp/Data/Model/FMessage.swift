@@ -54,6 +54,7 @@ struct Audio: AudioItem {
 
 struct FMessage {
     let chatId: String
+    var messageId: String
     let senderId: String
     let senderName: String
     let sentDate: Timestamp
@@ -61,18 +62,19 @@ struct FMessage {
     let imageUrl: String?
     let audioUrl: String?
     let messageKind: String
-    let readUsers: [String] // idを格納
+    var readUsers: [String] // idを格納
     
     func convertToDic() -> [String: Any] {
-        return ["chatId": self.chatId, "senderId": self.senderId, "senderName": self.senderName,
+        return ["chatId": self.chatId, "messageId": self.messageId, "senderId": self.senderId, "senderName": self.senderName,
                 "sentDate": self.sentDate, "text": self.text, "imageUrl": self.imageUrl, "audioUrl": self.audioUrl,
                 "messageKind": self.messageKind, "readUsers": self.readUsers]
     }
     
     // app -> firebase
-    init(chatId: String, senderId: String, senderName: String, sentDate: Date, text: String = "",
+    init(chatId: String, messageId: String, senderId: String, senderName: String, sentDate: Date, text: String = "",
          imageUrl: String = "", audioUrl: String = "", messageKind: String = "text", readUsers: [String]) {
         self.chatId = chatId
+        self.messageId = messageId
         self.senderId = senderId
         self.senderName = senderName
         self.sentDate = Timestamp(date: sentDate)
@@ -85,7 +87,7 @@ struct FMessage {
     
     // firebase -> app
     // 後でアプリ内で使うデータ構造へ変換する
-    init?(data: [String:Any]) {
+    init?(data: [String:Any], messageId: String = "") {
         guard
             let chatId = data["chatId"] as? String,
             let senderId = data["senderId"] as? String,
@@ -93,6 +95,8 @@ struct FMessage {
             let sentDate = data["sentDate"] as? Timestamp,
             let readUsers = data["readUsers"] as? [String] else { return nil }
         
+        // messageIdはdocumentIdなので取得時点では入れない
+        self.messageId = messageId
         self.chatId = chatId
         self.senderId = senderId
         self.senderName = senderName
@@ -139,10 +143,8 @@ struct FMessage {
             break
         }
         
-        // この時点ではmessageIdは何も入れない
-        // firebaseのdocumentIdがmessageIdになるため
         return Message(sender: Sender(senderId: self.senderId, displayName: self.senderName), chatId: self.chatId,
-                       messageId: "", sentDate: self.sentDate.dateValue(), kind: messageKind, readUsers: self.readUsers)
+                       messageId: self.messageId, sentDate: self.sentDate.dateValue(), kind: messageKind, readUsers: self.readUsers)
     }
 
 }

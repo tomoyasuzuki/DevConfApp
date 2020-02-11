@@ -16,11 +16,12 @@ public enum MessageChangeType {
 
 
 enum MessageError: Error {
-    case failAdd
+    case internalError
+    case addError
 }
 
 
-class ChatViewModel {
+class ChatRoomViewModel {
     var userRepo = UserRepository()
     var messageRepo = MessageRepository(chatId: "hogehoge")
     var disposeBag = DisposeBag()
@@ -40,6 +41,17 @@ class ChatViewModel {
     }
     
     func bind(input: Input) -> Output {
+        // インスタンス生成時（入室時）に既読更新のバッチ処理を走らせる
+        self.messageRepo.updateUnreadUsersCount()
+            .asObservable()
+            .subscribe(onNext: { result in
+                switch result {
+                case .success(()):
+                    print("success")
+                case .failure(let err):
+                    print("fail: \(err.localizedDescription)")
+                }
+            }).disposed(by: disposeBag)
         
         input.fetchCurrentUser
             .asObservable()
@@ -54,7 +66,7 @@ class ChatViewModel {
         let addMessage = input.sendButtonTapped
             .asObservable()
             .flatMap { [weak self] type -> Observable<Result<Void, Error>> in
-                guard let self = self else { return Observable.of(.failure(MessageError.failAdd))}
+                guard let self = self else { return Observable.of(.failure(MessageError.addError))}
                 switch type {
                 case .added(let data):
                     return self.messageRepo.addMessage(data: data)

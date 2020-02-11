@@ -15,6 +15,7 @@ struct FChat {
     let updatedAt: TimeInterval
     let latestMessage: FMessage
     let messages: [FMessage]
+    let readUsers: [String]
     
     init?(data: [String: Any]) {
         guard let chatTitle = data["chatTitle"] as? String ,
@@ -32,6 +33,12 @@ struct FChat {
         self.updatedAt = updatedAt
         self.latestMessage = latestMessage
         self.messages = messages
+        
+        if let readUsers = data["readUsers"] as? [String] {
+            self.readUsers = readUsers
+        } else {
+            self.readUsers = []
+        }
     }
     
     func convertToChat() -> Chat {
@@ -43,6 +50,6 @@ struct FChat {
         return Chat(chatId: "", chatTitle: self.chatTitle, chatMembers: members,
                     createdAt: Date(timeIntervalSince1970: self.createdAt),
                     updatedAt: Date(timeIntervalSince1970: self.updatedAt),
-                    latestMessage: latest, messages: messages)
+                    latestMessage: latest, messages: messages, readUsersCount: self.readUsers.count)
     }
 }

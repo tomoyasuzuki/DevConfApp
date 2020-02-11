@@ -14,11 +14,12 @@ struct Chat {
     let chatMembers: [UserModel]
     let createdAt: Date
     let updatedAt: Date
-    let latestMessage: Message
+    let latestMessage: Message?
     let messages: [Message]
+    let readUsersCount: Int
     
     init(chatId: String, chatTitle: String, chatMembers: [UserModel], createdAt: Date,
-         updatedAt: Date, latestMessage: Message, messages: [Message]) {
+         updatedAt: Date, latestMessage: Message?, messages: [Message], readUsersCount: Int) {
         self.chatId = chatId
         self.chatTitle = chatTitle
         self.chatMembers = chatMembers
@@ -26,12 +27,14 @@ struct Chat {
         self.updatedAt = updatedAt
         self.latestMessage = latestMessage
         self.messages = messages
+        self.readUsersCount = readUsersCount
     }
     
     // フィールドのみ追加
     // 整合性を保つためには chatmMembers, latestMessage, messages は外から追加する必要がある
     func convertToDic() -> [String: Any] {
-        return ["chatTitle": self.chatTitle, "createdAt": self.createdAt, "updatedAt": self.updatedAt]
+        return ["chatTitle": self.chatTitle, "createdAt": self.createdAt,
+                "updatedAt": self.updatedAt, "readUsersCount": self.readUsersCount]
     }
 }
 

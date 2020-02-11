@@ -10,7 +10,7 @@ import UIKit
 import MessageKit
 
 
-struct Message: MessageType {
+struct ChatMessage: MessageType {
     var sender: SenderType
     
     var chatId: String
