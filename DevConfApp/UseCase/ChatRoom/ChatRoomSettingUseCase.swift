@@ -9,13 +9,6 @@
 import RxSwift
 import RxCocoa
 
-protocol ChatRoomSettingUsecaseInterface {
-    func getChatRoomMembers(roomId: String) -> Observable<Result<[UserEntity], Error>>
-    func getChatRoomSettings(roomId: String) -> Observable<Result<RoomSettingEntity, Error>>
-    func updateChatRoomSetting(roomId: String, setting: RoomSettingEntity) -> Observable<Error?>
-    func updateChatRoomMembers(roomId: String, newMember: UserEntity) -> Observable<Error?>
-}
-
 class ChatRoomSettingUsecase: ChatRoomSettingUsecaseInterface {
     var repository: ChatRoomSettingRepositoryInterface
     

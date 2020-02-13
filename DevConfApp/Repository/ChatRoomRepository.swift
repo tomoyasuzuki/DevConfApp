@@ -30,8 +30,9 @@ class ChatRoomRepository: ChatRoomRepositoryInterface {
         return dataStore.getMessages(roomId: roomId)
             .map { result in
                 switch result {
-                case .success(let data):
-                    return .success(self.translator.translateMessage(data))
+                case .success(let dataArray):
+                    let messages: [MessageEntity] = dataArray.map { self.translator.translateMessage($0)}
+                    return .success(messages)
                 case .failure(let err):
                     return .failure(err)
                 }

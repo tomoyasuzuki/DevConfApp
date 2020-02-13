@@ -11,11 +11,12 @@ import RxCocoa
 
 struct ChatRoomInput {
     let viewDidLoad: Driver<Void>
-    let reload: Driver<String>
+    let addMessage: Driver<(String, String, Date, String)>
+    let deleteMessage: Driver<String>
 }
 
 struct ChatRoomOutput {
-    let getMessages: Driver<[MessageEntity]>
+    let getMessages: Driver<[MessageModel]>
 }
 
 protocol ChatRoomPresenterInterface {
@@ -24,7 +25,17 @@ protocol ChatRoomPresenterInterface {
 
 
 class ChatRoomPresenter: ChatRoomPresenterInterface {
+    
+    var usecase: ChatRoomUseCase
+    
+    var messages: [MessageModel] = []
+    var currentUser: [UserModel] = []
+    
+    init(usecase: ChatRoomUseCase) {
+        self.usecase = usecase
+    }
+    
     func bind(input: ChatRoomInput) -> ChatRoomOutput {
-        <#code#>
+        
     }
 }

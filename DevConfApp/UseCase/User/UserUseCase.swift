@@ -9,10 +9,26 @@
 import RxSwift
 import RxCocoa
 
-protocol UserUseCaseInterface {
+class UserUseCase {
+    var repository: UserRepositoryInterface
     
-}
-
-class UserUseCase: UserUseCaseInterface {
-   
+    init(repository: UserRepositoryInterface) {
+        self.repository = repository
+    }
+    
+    func getCurrentUser(id: String) -> Observable<UserEntity?> {
+        self.repository.fetchCurrentUser(id: id)
+    }
+    
+    func getChatRoomMembers(roomId: String) -> Observable<[UserEntity]?> {
+        self.repository.fetchChatRoomMembers(roomId: roomId)
+    }
+    
+    func addNewUser(user: UserEntity) -> Observable<Error?> {
+        self.repository.addNewUser(user: user)
+    }
+    
+    func updateUser(user: UserEntity) -> Observable<Error?> {
+        self.repository.updateUser(user: user)
+    }
 }

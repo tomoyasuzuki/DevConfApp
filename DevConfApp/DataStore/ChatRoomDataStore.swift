@@ -10,12 +10,8 @@ import FirebaseFirestore
 import RxSwift
 import RxCocoa
 
-enum FirebaseDataStoreError: Error {
-    case internalError
-}
-
 protocol ChatRoomDataStoreInterface {
-    func getMessages(roomId: String) -> Observable<Result<[String: Any], Error>>
+    func getMessages(roomId: String) -> Observable<Result<[[String: Any]], Error>>
     func addMessage(data: [String : Any]) -> Observable<Error?>
     func deleteMessage(roomId: String?, messageId: String) -> Observable<Error?>
     func updateReadUsersCount(roomId: String, currentUserId: String) -> Observable<Error?>
@@ -24,7 +20,7 @@ protocol ChatRoomDataStoreInterface {
 class ChatRoomDataStore: ChatRoomDataStoreInterface {
     let db = Firestore.firestore()
     
-    func getMessages(roomId: String) -> Observable<Result<[String : Any], Error>> {
+    func getMessages(roomId: String) -> Observable<Result<[[String : Any]], Error>> {
         return Observable.create { [weak self] observer in
             let disposables = Disposables.create()
             guard let self = self else {
@@ -33,14 +29,17 @@ class ChatRoomDataStore: ChatRoomDataStoreInterface {
             
             self.db.collection("message")
                 .whereField("roomId", isEqualTo: roomId)
-                .getDocuments { snp, err in
+                .addSnapshotListener { snp, err in
                     if err != nil || snp == nil {
                         observer.onNext(.failure(FirebaseDataStoreError.internalError))
                     }
                     
+                    var dataArray: [[String : Any]] = []
                     snp!.documents.forEach { doc in
-                        observer.onNext(.success(doc.data()))
+                        dataArray.append(doc.data())
                     }
+                    
+                    observer.onNext(.success(dataArray))
             }
             return disposables
         }
@@ -97,7 +96,7 @@ class ChatRoomDataStore: ChatRoomDataStoreInterface {
                     return
                 }
                 
-                var unreadMesssages: [FMessage] = []
+                var unreadMesssages: [MessageEntity] = []
                 
                 snp!.documents.forEach { snapshot in
                     let data = snapshot.data()

@@ -14,12 +14,14 @@ struct MessageEntity {
     var sentDate: Date
     var imageUrl: String
     var audioUrl: String
+    var readUsers: [String]
     
-    init(messageId: String, senderId: String, text: String, sentDate: Date, imageUrl: String, audioUrl: String) {
+    init(messageId: String, senderId: String, text: String, sentDate: Date, imageUrl: String, audioUrl: String, readUsers: [String]) {
         self.messageId = messageId
         self.senderId = senderId
         self.sentDate = sentDate
         self.imageUrl = imageUrl
         self.audioUrl = audioUrl
+        self.readUsers = readUsers
     }
 }

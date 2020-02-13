@@ -9,14 +9,7 @@
 import RxSwift
 import RxCocoa
 
-protocol ChatRoomUsecaseInterface {
-    func getMessages() -> Observable<Result<[MessageEntity], Error>>
-    func addMessage(message: MessageEntity) -> Observable<Error?>
-    func deleteMessage(massageId: String) -> Observable<Error?>
-    func updateReadUsersCount(currentUserId: String) -> Observable<Error?>
-}
-
-class ChatRoomUseCase: ChatRoomUsecaseInterface {
+class ChatRoomUseCase {
     // MARK: Repository
     
     var repository: ChatRoomRepositoryInterface
