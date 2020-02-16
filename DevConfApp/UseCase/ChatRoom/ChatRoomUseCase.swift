@@ -35,8 +35,8 @@ class ChatRoomUseCase {
         return repository.deleteMessage(roomId: roomId, messageId: messageId)
     }
     
-    func updateReadUsersCount(currentUserId: String) -> Observable<Error?> {
-        return repository.updateReadUsersCount(roomId: roomId, currentUserId: currentUserId)
-    }
+//    func updateReadUsersCount(currentUserId: String) -> Observable<Error?> {
+//        return repository.updateReadUsersCount(roomId: roomId, currentUserId: currentUserId)
+//    }
 }
 

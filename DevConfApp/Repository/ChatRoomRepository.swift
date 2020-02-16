@@ -13,7 +13,6 @@ protocol ChatRoomRepositoryInterface {
     func fetchMessages(roomId: String) -> Observable<Result<[MessageEntity], Error>>
     func addMessage(message: MessageEntity) -> Observable<Error?>
     func deleteMessage(roomId: String, messageId: String) -> Observable<Error?>
-    func updateReadUsersCount(roomId: String, currentUserId: String) -> Observable<Error?>
 }
 
 class ChatRoomRepository: ChatRoomRepositoryInterface {
@@ -47,7 +46,7 @@ class ChatRoomRepository: ChatRoomRepositoryInterface {
         return dataStore.deleteMessage(roomId: roomId, messageId: messageId)
     }
     
-    func updateReadUsersCount(roomId: String, currentUserId: String) -> Observable<Error?> {
-        return dataStore.updateReadUsersCount(roomId: roomId, currentUserId: currentUserId)
-    }
+//    func updateReadUsersCount(roomId: String, currentUserId: String) -> Observable<Error?> {
+//        return dataStore.updateReadUsersCount(roomId: roomId, currentUserId: currentUserId)
+//    }
 }

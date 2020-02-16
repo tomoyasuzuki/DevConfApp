@@ -9,7 +9,7 @@
 import RxSwift
 import RxCocoa
 
-class ChatRoomSettingUsecase: ChatRoomSettingUsecaseInterface {
+class ChatRoomSettingUsecase {
     var repository: ChatRoomSettingRepositoryInterface
     
     init(repository: ChatRoomSettingRepositoryInterface) {

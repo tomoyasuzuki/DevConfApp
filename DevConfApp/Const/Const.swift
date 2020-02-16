@@ -34,5 +34,9 @@ struct Const {
         static let vividBlue = UIColor.hex(string: "#0000ff", alpha: 1.0)
         static let vividLightBlue = UIColor.hex(string: "#00ffff", alpha: 1.0)
         static let vividPurple = UIColor.hex(string: "#ff00ff", alpha: 1.0)
+        static let vividRed = UIColor.hex(string: "#ff0000", alpha: 1.0)
+        static let tomato = UIColor.hex(string: "#ff6347", alpha: 1.0)
+        static let lightPink = UIColor.hex(string: "#ffc0cb", alpha: 1.0)
+        static let superLightBlue = UIColor.hex(string: "#afeeee", alpha: 1.0)
     }
 }

@@ -69,4 +69,12 @@ class UserDataStore: UserDataStoreInterface {
             }
         }
     }
+    
+    func fetchUserProfileImage(id: String, complition: @escaping (Error?) -> ()) {
+        
+    }
+    
+    func addUserProfileImage(id: String, complition: @escaping (Error?) -> ()) {
+        
+    }
 }

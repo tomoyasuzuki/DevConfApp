@@ -10,13 +10,6 @@ import RxSwift
 import RxCocoa
 import Firebase
 
-enum ChatCategory: String {
-    case none = "カテゴリなし"
-    case front = "フロントエンド"
-    case back = "バックエンド"
-    case infra = "インフラ"
-}
-
 class CreateNewChatViewModel {
     let repo = ChatRepository(userId: "")
     let disposeBag = DisposeBag()

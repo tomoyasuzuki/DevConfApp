@@ -19,6 +19,7 @@ struct MessageEntity {
     init(messageId: String, senderId: String, text: String, sentDate: Date, imageUrl: String, audioUrl: String, readUsers: [String]) {
         self.messageId = messageId
         self.senderId = senderId
+        self.text = text
         self.sentDate = sentDate
         self.imageUrl = imageUrl
         self.audioUrl = audioUrl

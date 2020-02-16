@@ -16,10 +16,10 @@ protocol AuthRepositoryInterface {
 }
 
 class AuthRepository: AuthRepositoryInterface {
-    var datastore: AuthDataStore
-    var translator: Translator
+    var datastore: AuthDataStoreInterface
+    var translator: TranslatorInterface
     
-    init(datastore: AuthDataStore, translator: Translator) {
+    init(datastore: AuthDataStoreInterface, translator: TranslatorInterface) {
         self.datastore = datastore
         self.translator = translator
     }
