@@ -13,6 +13,8 @@ protocol UserRepositoryInterface {
     func fetchChatRoomMembers(roomId: String) -> Observable<[UserEntity]?>
     func addNewUser(user: UserEntity) -> Observable<Error?>
     func updateUser(user: UserEntity) -> Observable<Error?>
+    func updateUserProfileImage(id: String, image: UIImage) -> Observable<Error?>
+    func updateUserField(id: String, nickName: String?, profileImageUrl: String?, introText: String?) -> Observable<Error?>
 }
 
 class UserRepository: UserRepositoryInterface {
@@ -23,6 +25,7 @@ class UserRepository: UserRepositoryInterface {
         self.datastore = datastore
         self.translator = translator
     }
+    
     func fetchCurrentUser(id: String) -> Observable<UserEntity?> {
         return Observable.create { [weak self] observer in
             let disposables = Disposables.create()
@@ -112,6 +115,54 @@ class UserRepository: UserRepositoryInterface {
                     observer.onNext(nil)
                 }
             }
+            return disposables
+        }
+    }
+    
+    func updateUserProfileImage(id: String, image: UIImage) -> Observable<Error?> {
+        return Observable.create { [weak self] observer in
+            let disposables = Disposables.create()
+            
+            guard let self = self else {
+                observer.onNext(nil)
+                return disposables
+            }
+            
+            if let data = self.translator.translateImageToData(image: image) {
+                self.datastore.updateUserProfileImage(id: id, data: data) { err in
+                    if let err = err {
+                        observer.onNext(err)
+                    } else {
+                        observer.onNext(nil)
+                    }
+                }
+            }
+            
+            return disposables
+        }
+    }
+    
+    func updateUserField(id: String, nickName: String?, profileImageUrl: String?, introText: String?) -> Observable<Error?> {
+        return Observable.create { [weak self] observer in
+            let disposables = Disposables.create()
+            
+            guard let self = self else {
+                observer.onNext(nil)
+                return disposables
+            }
+            
+            let data = self.translator.translateUserFieldToData(nickName: nickName,
+                                                                profileImageUrl: profileImageUrl,
+                                                                introText: introText)
+            
+            self.datastore.updateUserField(id: id, data: data) { err in
+                if let err = err {
+                    observer.onNext(err)
+                } else {
+                    observer.onNext(nil)
+                }
+            }
+            
             return disposables
         }
     }

@@ -31,4 +31,29 @@ class UserUseCase {
     func updateUser(user: UserEntity) -> Observable<Error?> {
         self.repository.updateUser(user: user)
     }
+    
+    func updateUserProfileImage(id: String, image: UIImage) -> Observable<Error?> {
+        self.repository.updateUserProfileImage(id: id, image: image).map { err in
+            if err != nil {
+                return ProfileError.updateImageFail
+            } else {
+                return nil
+            }
+        }
+    }
+    
+    func updateUserInfo(id: String, nickName: String?, profileImageUrl: String?, introText: String?) -> Observable<Error?> {
+        self.repository
+            .updateUserField(id: id,
+                             nickName: nickName,
+                             profileImageUrl: profileImageUrl,
+                             introText: introText)
+            .map { err in
+                if err != nil {
+                    return ProfileError.updateInfoFail
+                } else {
+                    return nil
+                }
+        }
+    }
 }

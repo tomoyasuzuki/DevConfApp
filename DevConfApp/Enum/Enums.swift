@@ -22,6 +22,11 @@ enum AuthError: Error {
     case passwordIsTooShort
 }
 
+enum ProfileError: Error {
+    case updateImageFail
+    case updateInfoFail
+}
+
 // MARK: View Action
 
 /*
@@ -47,6 +52,12 @@ enum AuthViewAction: ViewAction {
     case ButtonStatusDidChange(Bool)
     case navigateToProfileSetting(String)
     case navigateToHome(String)
+}
+
+enum ProfileSettingViewAction: ViewAction {
+    case showImageUploadError(String)
+    case showUserInfoUploadError(String)
+    case navigateToHome
 }
 
 // MARK: Helper

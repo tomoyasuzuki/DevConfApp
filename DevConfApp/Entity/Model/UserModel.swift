@@ -12,11 +12,12 @@ struct UserModel {
     var userId: String
     var userName: String
     var profileImageUrl: String
+    var introText: String
     var tags: [String]
     var messages: [MessageEntity]
     var chats: [ChatRoomEntity]
     
-    init(userId: String, userName: String, profileImageUrl: String,
+    init(userId: String, userName: String, profileImageUrl: String, introText: String, 
          tags: [String], messages: [MessageEntity], chats: [ChatRoomEntity]) {
         self.userId = userId
         self.userName = userName

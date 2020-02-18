@@ -18,6 +18,8 @@ protocol TranslatorInterface {
     func translateChatToData(chat: ChatRoomEntity) -> [String : Any]
     func translateSettingToData(setting: RoomSettingEntity) -> [String : Any]
     func translateUserToData(user: UserEntity) -> [String : Any]
+    func translateImageToData(image: UIImage) -> Data?
+    func translateUserFieldToData(nickName: String?, profileImageUrl: String?, introText: String?) -> [String : Any]
 }
 
 class Translator: TranslatorInterface {
@@ -69,5 +71,78 @@ class Translator: TranslatorInterface {
     func translateRoomSetting(_ data: [String : Any]) -> RoomSettingEntity {
         return RoomSettingEntity(roomId: data["roomId"] as? String ?? "",
                                  notifyOrNot: data["notifyOrNot"] as? Bool ?? false)
+    }
+    
+    func translateImageToData(image: UIImage) -> Data? {
+        return image.jpegData(compressionQuality: 1.0)
+    }
+    
+    func translateUserModelToData(nickName: String?, profileImageUrl: String?, introText: String?) -> [String : Any] {
+        let nickNameIsEmpty: Bool = false
+        let profileImageUrlIsEmpty: Bool = false
+        let introTextIsEmpty: Bool = false
+        
+        let status = (nickNameIsEmpty, profileImageUrlIsEmpty, introTextIsEmpty)
+        
+        switch status {
+        case (true, false, false):
+            return ["profileImageUrl": profileImageUrl!, "introText": introText!]
+        case (false, true, false):
+            return ["nickName": nickName!, "introText": introText!]
+        case (false, false, true):
+            return ["nickName": nickName!, "profileImageUrl": profileImageUrl!]
+        case (true, true, false):
+            return ["introText": introText!]
+        case (true, false, true):
+            return ["profileImageUrl": profileImageUrl!]
+        case (false, true, true):
+            return ["nickName": nickName!]
+        default:
+            break
+        }
+    }
+    
+    // 空白の欄は変更なしなので渡さない
+    private func validateEmptyFields(user: UserModel) -> [String : Any] {
+        var nickNameIsEmpty: Bool = false
+        var profileImageUrlIsEmpty: Bool = false
+        var introTextIsEmpty: Bool = false
+        
+        if user.userName == "" {
+            nickNameIsEmpty = true
+        }
+        
+        if user.profileImageUrl == "" {
+            profileImageUrlIsEmpty = true
+        }
+        
+        if user.introText == "" {
+            introTextIsEmpty = true
+        }
+        
+        if user.userName == "", user.profileImageUrl == "", user.introText == "" {
+            return ["": ""]
+        }
+        
+        let status = (nickNameIsEmpty, profileImageUrlIsEmpty, introTextIsEmpty)
+        
+        switch status {
+        case (true, true, false):
+            return ["introText": user.introText]
+        case (false, true, true):
+            return ["nickName": user.userName]
+        case (true, false, true):
+            return ["profileImageUrl": user.profileImageUrl]
+        case (true, false, false):
+            return ["profileImageUrl": user.profileImageUrl, "introText": user.introText]
+        case (false, true, false):
+            return ["nickName": user.userName, "introText": user.introText]
+        case (false, false, true):
+            return ["nickName": user.userName, "profileImageUrl": user.profileImageUrl]
+        case (false, false, false):
+            return ["nickName": user.userName, "profileImageUrl": user.profileImageUrl, "introText": user.introText]
+        default:
+            return ["": ""]
+        }
     }
 }

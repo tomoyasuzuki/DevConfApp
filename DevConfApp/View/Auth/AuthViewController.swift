@@ -161,15 +161,17 @@ class AuthViewController: UIViewController {
         if let action = action as? AuthViewAction {
             switch action {
             case .navigateToHome(let mes):
+                
                 SVProgressHUD.showSuccess(withStatus: mes)
                 
-                let vc = ProfileSettingViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
+//                let vc = ProfileSettingViewController(viewModel: ProfileSettingViewModel())
+//                self.navigationController?.pushViewController(vc, animated: true)
             case .navigateToProfileSetting(let mes):
+                
                 SVProgressHUD.showSuccess(withStatus: mes)
                 
-                let vc = ProfileSettingViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
+//                let vc = ProfileSettingViewController(ProfileSettingViewModel())
+//                self.navigationController?.pushViewController(vc, animated: true)
             case .showLoginError(let mes):
                 SVProgressHUD.showError(withStatus: mes)
             case .showSignUpError(let mes):

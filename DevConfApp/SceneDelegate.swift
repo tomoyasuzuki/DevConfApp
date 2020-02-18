@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: scene)
         self.window = window
-        window.rootViewController = resolver.resolve(AuthViewController.self)
+        window.rootViewController = UINavigationController(rootViewController: ProfileSettingViewController())
         
         window.makeKeyAndVisible()
     }
