@@ -17,8 +17,8 @@ struct AuthInput {
 }
 
 struct AuthOutput {
-    let login: Driver<Void>
-    let signup: Driver<Void>
+    let login: Driver<ViewAction>
+    let signup: Driver<ViewAction>
 }
 
 protocol AuthViewModelInterface {
@@ -28,6 +28,8 @@ protocol AuthViewModelInterface {
 class AuthViewModel: AuthViewModelInterface {
     
     let authUseCase: AuthUseCase
+    
+    var uid: String?
     
     init(authUseCase: AuthUseCase) {
         self.authUseCase = authUseCase
@@ -45,16 +47,24 @@ class AuthViewModel: AuthViewModelInterface {
                 
                 return sSelf.authUseCase.login(email: input.email.value, password: input.password.value)
             }
-            .map { uid, err -> ViewAction in
+            .map { [weak self] uid, err -> ViewAction in
+                guard let sSelf = self else { return CommonViewAction.unknownError }
+                
                 if let err = err {
-                    return AuthViewAction.showLoginError(err)
+                    let errMessage = sSelf.createErrorMessage(err)
+                    
+                    return AuthViewAction.showLoginError(errMessage)
                 } else if let uid = uid {
-                    return AuthViewAction.navigateToHome(uid)
+                    sSelf.uid = uid
+                    
+                    let sucMessage = "ログイン成功"
+                    return AuthViewAction.navigateToHome(sucMessage)
                 } else {
-                    return CommonViewAction.unknownError
+                    let errMessage = "予期せぬエラーが発生しました。時間をおいて再度お試しください。"
+                    
+                    return AuthViewAction.showLoginError(errMessage)
                 }
             }
-            .void()
             .asDriverWithEmpty()
         
         
@@ -67,20 +77,52 @@ class AuthViewModel: AuthViewModelInterface {
             
                 return sSelf.authUseCase.signup(email: input.email.value, password: input.password.value)
             }
-            .map { uid, err -> ViewAction in
+            .map { [weak self] uid, err -> ViewAction in
+                guard let sSelf = self else { return CommonViewAction.unknownError }
+                
                 if let err = err {
-                    return AuthViewAction.showLoginError(err)
+                    let errMessage = sSelf.createErrorMessage(err)
+                    
+                    return AuthViewAction.showSignUpError(errMessage)
                 } else if let uid = uid {
-                    return AuthViewAction.navigateToProfileSetting(uid)
+                    sSelf.uid = uid
+                    
+                    let sucMessage = "登録成功"
+                    return AuthViewAction.navigateToProfileSetting(sucMessage)
                 } else {
-                    return CommonViewAction.unknownError
+                    let errMessage = "予期せぬエラーが発生しました。時間をおいて再度お試しください。"
+                    
+                    return AuthViewAction.showSignUpError(errMessage)
                 }
             }
-            .void()
             .asDriverWithEmpty()
         
         
         
         return AuthOutput(login: login, signup: signup)
+    }
+    
+    private func createErrorMessage(_ err: Error) -> String {
+        var errMessage: String = ""
+        
+        if let err = err as? AuthError {
+            switch err {
+            case .emailIsInvalid:
+                errMessage = "メールアドレスの形式が正しくありません。"
+            case .emailIsAlreadyUsed:
+                errMessage = "このメールアドレスは既に使用されています。"
+            case .passwordIsTooShort:
+                errMessage = "パスワードは6文字以上である必要があります。"
+            }
+        } else if let err = err as? CommonError {
+            switch err {
+            case .networkingError:
+                errMessage = "通信状態が不安定です。"
+            case.unknownError:
+                errMessage = "予期せぬエラーが発生しました。時間をおいて再度お試しください。"
+            }
+        }
+        
+        return errMessage
     }
 }

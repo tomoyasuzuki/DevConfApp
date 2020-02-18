@@ -40,11 +40,10 @@ enum CommonViewAction: ViewAction {
 
 
 enum AuthViewAction: ViewAction {
-    case showLoginError(Error)
-    case showSignUpError(Error)
-    case showEmailInvalidError
-    case showPasswordInvalidError
-    case showConfirmPasswordInvalidError
+    case showLoginError(String)
+    case showSignUpError(String)
+    case showEmailInvalidError(String)
+    case showPasswordInvalidError(String)
     case ButtonStatusDidChange(Bool)
     case navigateToProfileSetting(String)
     case navigateToHome(String)

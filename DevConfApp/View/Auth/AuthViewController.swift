@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import FirebaseAuth
 import Swinject
+import SVProgressHUD
 
 class AuthViewController: UIViewController {
     private var viewModel: AuthViewModelInterface
@@ -110,7 +111,7 @@ class AuthViewController: UIViewController {
         button.titleLabel?.font = .boldSystemFont(ofSize: 12.0)
         return button
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Const.color.white242
@@ -133,12 +134,6 @@ class AuthViewController: UIViewController {
         autoLayout()
     }
     
-//    override func loadView() {
-//        super.loadView()
-//        view = GradientView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height),
-//                            startColor: Const.color.tomato.cgColor, endColor: UIColor.white.cgColor)
-//    }
-    
     func setupViewModel() {
         let input = AuthInput(email: email,
                               password: password,
@@ -148,15 +143,46 @@ class AuthViewController: UIViewController {
         let output = viewModel.bind(input: input)
         
         output.login
-            .drive(onNext: { [weak self] _ in
+            .drive(onNext: { [weak self] action in
                 guard let sSelf = self else { return }
                 
-                sSelf.present(resolver.resolve(ProfileSettingViewController.self)!,
-                              animated: true,
-                              completion: nil)
+                sSelf.handleViewAction(action)
+            }).disposed(by: disposeBag)
+        
+        output.signup
+            .drive(onNext: { [weak self] action in
+                guard let sSelf = self else { return }
+                
+                sSelf.handleViewAction(action)
             }).disposed(by: disposeBag)
     }
     
+    private func handleViewAction(_ action: ViewAction) {
+        if let action = action as? AuthViewAction {
+            switch action {
+            case .navigateToHome(let mes):
+                SVProgressHUD.showSuccess(withStatus: mes)
+                
+                let vc = ProfileSettingViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            case .navigateToProfileSetting(let mes):
+                SVProgressHUD.showSuccess(withStatus: mes)
+                
+                let vc = ProfileSettingViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            case .showLoginError(let mes):
+                SVProgressHUD.showError(withStatus: mes)
+            case .showSignUpError(let mes):
+                SVProgressHUD.showError(withStatus: mes)
+            case .showEmailInvalidError(let mes):
+                SVProgressHUD.showError(withStatus: mes)
+            case .showPasswordInvalidError(let mes):
+                SVProgressHUD.showError(withStatus: mes)
+            default:
+                break
+            }
+        }
+    }
     
     func autoLayout() {
         
