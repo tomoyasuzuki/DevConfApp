@@ -19,9 +19,6 @@ class AuthViewController: UIViewController {
     private let indicator = UIActivityIndicatorView()
     private let disposeBag = DisposeBag()
     
-    private var email: BehaviorRelay<String> = BehaviorRelay(value: "")
-    private var password: BehaviorRelay<String> = BehaviorRelay(value: "")
-    
     init(viewModel: AuthViewModelInterface) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -46,17 +43,16 @@ class AuthViewController: UIViewController {
         return label
     }()
     
-    var emailInput: UITextField = {
+    lazy var emailInput: UITextField = {
         let view = BorderTextFeild(borderColor: .darkGray)
         view.placeholder = "Email"
         view.attributedPlaceholder = NSAttributedString(string: view.placeholder!,
                                                         attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
         view.textAlignment = .left
-        
         return view
     }()
     
-    var passwordInput: UITextField = {
+    lazy var passwordInput: UITextField = {
         let view = BorderTextFeild(borderColor: .darkGray)
         view.placeholder = "Password"
         view.attributedPlaceholder = NSAttributedString(string: view.placeholder!,
@@ -116,6 +112,8 @@ class AuthViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = Const.color.white242
         
+        self.navigationController?.navigationBar.isHidden = true
+        
         
         indicator.center = view.center
         indicator.style = .large
@@ -135,8 +133,8 @@ class AuthViewController: UIViewController {
     }
     
     func setupViewModel() {
-        let input = AuthInput(email: email,
-                              password: password,
+        let input = AuthInput(email: emailInput.rx.text.orEmpty.asDriverWithEmpty(),
+                              password: passwordInput.rx.text.orEmpty.asDriverWithEmpty(),
                               loginButtonTapped: signInButton.rx.tap.asDriverWithEmpty(),
                               signupButtonTapped: signUpButton.rx.tap.asDriverWithEmpty())
         
@@ -162,28 +160,40 @@ class AuthViewController: UIViewController {
             switch action {
             case .navigateToHome(let mes):
                 
-                SVProgressHUD.showSuccess(withStatus: mes)
-                
-//                let vc = ProfileSettingViewController(viewModel: ProfileSettingViewModel())
-//                self.navigationController?.pushViewController(vc, animated: true)
+                self.showSuccess(message: mes)
             case .navigateToProfileSetting(let mes):
                 
-                SVProgressHUD.showSuccess(withStatus: mes)
-                
-//                let vc = ProfileSettingViewController(ProfileSettingViewModel())
-//                self.navigationController?.pushViewController(vc, animated: true)
+                self.showSuccess(message: mes)
             case .showLoginError(let mes):
-                SVProgressHUD.showError(withStatus: mes)
+                self.showError(message: mes)
             case .showSignUpError(let mes):
-                SVProgressHUD.showError(withStatus: mes)
+                self.showError(message: mes)
             case .showEmailInvalidError(let mes):
-                SVProgressHUD.showError(withStatus: mes)
+                self.showError(message: mes)
             case .showPasswordInvalidError(let mes):
-                SVProgressHUD.showError(withStatus: mes)
+                self.showError(message: mes)
             default:
                 break
             }
         }
+    }
+    
+    private func showError(message: String) {
+        let alert = UIAlertController(title: "エラー", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func showSuccess(message: String) {
+        let alert = UIAlertController(title: "エラー", message: message, preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "OK", style: .default) { _ in
+            let vc = resolver.resolve(ProfileSettingViewController.self)!
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func autoLayout() {
@@ -235,3 +245,20 @@ class AuthViewController: UIViewController {
         }
     }
 }
+
+//extension AuthViewController: UITextFieldDelegate {
+//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+//        guard let text = textField.text else { return true }
+//
+//        switch textField.tag {
+//        case 0:
+//            self.email.accept(text)
+//        case 1:
+//            self.password.accept(text)
+//        default:
+//            break
+//        }
+//
+//        return true
+//    }
+//}

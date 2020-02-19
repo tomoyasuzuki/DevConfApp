@@ -17,6 +17,7 @@ struct ProfileSettingInput {
 }
 
 struct ProfileSettingOutput {
+    let loading: Driver<Bool>
     let settingUpdate: Driver<ViewAction>
 }
 
@@ -30,6 +31,8 @@ final class ProfileSettingViewModel: ProfileSettingViewModelInterface {
     
     var uid: String?
     
+    var loading: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    
     init(usecase: UserUseCase) {
         self.usecase = usecase
     }
@@ -40,6 +43,9 @@ final class ProfileSettingViewModel: ProfileSettingViewModelInterface {
                  input.nickName.asObservable(),
                  input.introText.asObservable(),
                  input.nextButtonTapped.asObservable())
+            .do(onNext: { (_, _, _, _) in
+                self.loading.accept(true)
+            })
             .flatMap { [weak self] image, nickName, introText, _  -> Observable<Error?> in
                 guard let sSelf = self, let uid = sSelf.uid else {
                     return Observable.of(CommonError.unknownError)
@@ -57,6 +63,9 @@ final class ProfileSettingViewModel: ProfileSettingViewModelInterface {
                         }
                     }
             }
+            .do(onNext: { _ in
+                self.loading.accept(false)
+            })
             .map { err -> ViewAction in
                 if let err = err as? ProfileError {
                     switch err {
@@ -85,7 +94,8 @@ final class ProfileSettingViewModel: ProfileSettingViewModelInterface {
                 }
         }.asDriverWithEmpty()
         
-        return ProfileSettingOutput(settingUpdate: update)
+        return ProfileSettingOutput(loading: self.loading.asDriverWithEmpty(),
+                                    settingUpdate: update)
 
     }
 }

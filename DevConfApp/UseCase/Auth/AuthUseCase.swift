@@ -56,8 +56,8 @@ class AuthUseCase {
             return Observable.of((nil, AuthError.passwordIsTooShort))
         case (.invalid, .valid):
             return Observable.of((nil, AuthError.emailIsInvalid))
-        default:
-            return Observable.of((nil, nil))
+        case (.invalid, .invalid):
+            return Observable.of((nil, AuthError.emailIsInvalid))
         }
     }
     

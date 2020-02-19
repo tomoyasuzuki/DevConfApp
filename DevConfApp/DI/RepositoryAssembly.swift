@@ -15,5 +15,11 @@ class RepositoryAssembly: Assembly {
                                             translator: r.resolve(TranslatorInterface.self)!)
             return repository
         }
+        
+        container.register(UserRepositoryInterface.self) { r in
+            let repository = UserRepository(datastore: r.resolve(UserDataStoreInterface.self)!,
+                                            translator: r.resolve(TranslatorInterface.self)!)
+            return repository
+        }
     }
 }

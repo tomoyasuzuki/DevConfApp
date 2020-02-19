@@ -47,6 +47,7 @@
 		57288DC523F9A323008753C4 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57288DC423F9A323008753C4 /* DIContainer.swift */; };
 		57288DC723F9A7D1008753C4 /* DataStoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57288DC623F9A7D1008753C4 /* DataStoreAssembly.swift */; };
 		57288DC923F9A8B0008753C4 /* TranslatorAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57288DC823F9A8B0008753C4 /* TranslatorAssembly.swift */; };
+		57288DCB23FD7987008753C4 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57288DCA23FD7987008753C4 /* PlaceholderTextView.swift */; };
 		574753DF23B7815300A4569B /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753DE23B7815300A4569B /* Const.swift */; };
 		574753E323B7923600A4569B /* ExTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753E223B7923600A4569B /* ExTextField.swift */; };
 		574753E523B7982F00A4569B /* UnderBarTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574753E423B7982F00A4569B /* UnderBarTextField.swift */; };
@@ -152,6 +153,7 @@
 		57288DC423F9A323008753C4 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		57288DC623F9A7D1008753C4 /* DataStoreAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreAssembly.swift; sourceTree = "<group>"; };
 		57288DC823F9A8B0008753C4 /* TranslatorAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorAssembly.swift; sourceTree = "<group>"; };
+		57288DCA23FD7987008753C4 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		574753DE23B7815300A4569B /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		574753E223B7923600A4569B /* ExTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExTextField.swift; sourceTree = "<group>"; };
 		574753E423B7982F00A4569B /* UnderBarTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderBarTextField.swift; sourceTree = "<group>"; };
@@ -510,6 +512,7 @@
 			isa = PBXGroup;
 			children = (
 				5779214923DAF78A00AF5680 /* CircleImageView.swift */,
+				57288DCA23FD7987008753C4 /* PlaceholderTextView.swift */,
 				5721ECE223E229920086DF21 /* GradientCircleView.swift */,
 				5779214B23DAFBFA00AF5680 /* CircleNumberView.swift */,
 				5721ECE023E229190086DF21 /* GradientView.swift */,
@@ -838,6 +841,7 @@
 				57288D7C23F2AF8B008753C4 /* ChatRoomSettingRepository.swift in Sources */,
 				57288DC523F9A323008753C4 /* DIContainer.swift in Sources */,
 				57AB2F1C238BCE000021C67B /* EllipseTableViewCell.swift in Sources */,
+				57288DCB23FD7987008753C4 /* PlaceholderTextView.swift in Sources */,
 				5721ECF023E9DE8E0086DF21 /* BorderView.swift in Sources */,
 				57288DBD23F99D97008753C4 /* ProfileSettingViewController.swift in Sources */,
 				5779216823E1E44800AF5680 /* IntroPagingViewController.swift in Sources */,

@@ -10,8 +10,8 @@ import RxSwift
 import RxCocoa
 
 struct AuthInput {
-    let email: BehaviorRelay<String>
-    let password: BehaviorRelay<String>
+    let email: Driver<String>
+    let password: Driver<String>
     let loginButtonTapped: Driver<Void>
     let signupButtonTapped: Driver<Void>
 }
@@ -31,6 +31,9 @@ class AuthViewModel: AuthViewModelInterface {
     
     var uid: String?
     
+    var email: String = ""
+    var password: String = ""
+    
     init(authUseCase: AuthUseCase) {
         self.authUseCase = authUseCase
     }
@@ -38,14 +41,24 @@ class AuthViewModel: AuthViewModelInterface {
     let disposeBag = DisposeBag()
     
     func bind(input: AuthInput) -> AuthOutput {
-        let login = input.loginButtonTapped
-            .asObservable()
+        input.email.asObservable()
+            .subscribe(onNext: { email in
+                self.email = email
+            }).disposed(by: disposeBag)
+        
+        
+        input.password.asObservable()
+            .subscribe(onNext: { password in
+                self.password = password
+            }).disposed(by: disposeBag)
+        
+        let login = input.loginButtonTapped.asObservable()
             .flatMap { [weak self] _ -> Observable<(String?, Error?)> in
                 guard let sSelf = self else {
                     return Observable.of((nil, nil))
                 }
                 
-                return sSelf.authUseCase.login(email: input.email.value, password: input.password.value)
+                return sSelf.authUseCase.login(email: sSelf.email, password: sSelf.password)
             }
             .map { [weak self] uid, err -> ViewAction in
                 guard let sSelf = self else { return CommonViewAction.unknownError }
@@ -68,19 +81,20 @@ class AuthViewModel: AuthViewModelInterface {
             .asDriverWithEmpty()
         
         
-        let signup = input.signupButtonTapped
-            .asObservable()
+        let signup = input.signupButtonTapped.asObservable()
             .flatMap { [weak self] _ -> Observable<(String?, Error?)> in
                 guard let sSelf = self else {
                     return Observable.of((nil, nil))
                 }
-            
-                return sSelf.authUseCase.signup(email: input.email.value, password: input.password.value)
+                print(sSelf.email)
+                print(sSelf.password)
+                return sSelf.authUseCase.signup(email: sSelf.email, password: sSelf.password)
             }
             .map { [weak self] uid, err -> ViewAction in
                 guard let sSelf = self else { return CommonViewAction.unknownError }
                 
                 if let err = err {
+                    print(err.localizedDescription)
                     let errMessage = sSelf.createErrorMessage(err)
                     
                     return AuthViewAction.showSignUpError(errMessage)

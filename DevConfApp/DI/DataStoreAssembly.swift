@@ -13,5 +13,9 @@ class DataStoreAssembly: Assembly {
         container.register(AuthDataStoreInterface.self) { _ in
             return AuthDataStore()
         }
+        
+        container.register(UserDataStoreInterface.self) { _ in
+            return UserDataStore()
+        }
     }
 }

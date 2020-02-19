@@ -16,5 +16,11 @@ class ViewModelAssembly: Assembly {
             let vm = AuthViewModel(authUseCase: usecase)
             return vm
         }
+        
+        container.register(ProfileSettingViewModelInterface.self) { r in
+            let usecase = r.resolve(UserUseCase.self)!
+            let vm = ProfileSettingViewModel(usecase: usecase)
+            return vm
+        }
     }
 }

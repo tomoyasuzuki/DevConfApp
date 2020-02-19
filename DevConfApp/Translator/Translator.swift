@@ -77,7 +77,7 @@ class Translator: TranslatorInterface {
         return image.jpegData(compressionQuality: 1.0)
     }
     
-    func translateUserModelToData(nickName: String?, profileImageUrl: String?, introText: String?) -> [String : Any] {
+    func translateUserFieldToData(nickName: String?, profileImageUrl: String?, introText: String?) -> [String : Any] {
         let nickNameIsEmpty: Bool = false
         let profileImageUrlIsEmpty: Bool = false
         let introTextIsEmpty: Bool = false
@@ -98,7 +98,7 @@ class Translator: TranslatorInterface {
         case (false, true, true):
             return ["nickName": nickName!]
         default:
-            break
+            return ["": ""]
         }
     }
     

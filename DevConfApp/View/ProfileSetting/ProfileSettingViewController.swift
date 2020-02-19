@@ -9,10 +9,15 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SVProgressHUD
 
 final class ProfileSettingViewController: UIViewController {
     
     var viewModel: ProfileSettingViewModelInterface
+    
+    var image: BehaviorRelay<UIImage?> = BehaviorRelay(value: nil)
+    
+    let disposeBag = DisposeBag()
 
     init(viewModel: ProfileSettingViewModelInterface) {
         self.viewModel = viewModel
@@ -25,19 +30,18 @@ final class ProfileSettingViewController: UIViewController {
     }
 
     private let iconImageView: UIImageView = {
-        let view = UIImageView()
-        view.layer.cornerRadius = 40
+        let view = CircleImageView()
+        view.layer.cornerRadius = view.frame.width / 2
         view.clipsToBounds = true
-        view.backgroundColor = Const.color.white242
+        view.backgroundColor = .white
         return view
     }()
     
     private let cameraIconView: UIImageView = {
         let view = CircleImageView()
-        view.image = UIImage(named: "camera_icon_black")?
-        .withAlignmentRectInsets(UIEdgeInsets(top: 8.0, left: 8.0, bottom: 8.0, right: 8.0))
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 10
+        view.image = UIImage(named: "camera_icon_black")
+        view.backgroundColor = .clear
+        view.layer.cornerRadius = view.frame.width / 2
         view.clipsToBounds = true
         return view
     }()
@@ -52,21 +56,44 @@ final class ProfileSettingViewController: UIViewController {
     }()
     
     private let selfIntroTextView: UITextView = {
-        let view = UITextView()
-        view.backgroundColor = Const.color.white242
+        let view = PlaceholderTextView()
+        view.backgroundColor = .white
         view.layer.cornerRadius = 14.0
+        view.layer.borderColor = UIColor.lightGray.cgColor
+        view.layer.borderWidth = 1.0
+        view.placeholderText = "自己紹介文を書きましょう。"
         return view
+    }()
+    
+    var nextButton: UIButton = {
+        let button = GradientButton(frame: CGRect.zero,
+                                    startColor: Const.color.vividBlue.cgColor,
+                                    endColor: Const.color.vividLightBlue.cgColor,
+                                    cornerRadius: 20.0)
+        button.setTitle("次へ", for: .normal)
+        button.setTitle("次へ", for: .highlighted)
+        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.white, for: .highlighted)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 14.0)
+        button.layer.borderWidth = 0
+        button.layer.shadowOpacity = 0.5
+        button.layer.shadowOffset = CGSize(width: 2, height: 2)
+        return button
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .black
+        view.backgroundColor = Const.color.white242
+        
+        self.navigationController?.navigationBar.isHidden = false
+        self.navigationItem.setHidesBackButton(true, animated: false)
         
         view.addSubview(iconImageView)
         view.addSubview(cameraIconView)
         view.addSubview(displayNameTextField)
         view.addSubview(selfIntroTextView)
+        view.addSubview(nextButton)
         
         self.navigationItem.title = "プロフィール設定"
         
@@ -78,13 +105,13 @@ final class ProfileSettingViewController: UIViewController {
         iconImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(160)
             make.centerX.equalToSuperview()
-            make.size.equalTo(80)
+            make.size.equalTo(140)
         }
         
         cameraIconView.snp.makeConstraints { make in
-            make.centerY.equalTo(iconImageView).offset(35)
-            make.centerX.equalTo(iconImageView).offset(35)
-            make.size.equalTo(20)
+            make.centerY.equalTo(iconImageView).offset(50)
+            make.centerX.equalTo(iconImageView).offset(50)
+            make.size.equalTo(30)
         }
         
         displayNameTextField.snp.makeConstraints { make in
@@ -100,9 +127,45 @@ final class ProfileSettingViewController: UIViewController {
             make.width.equalTo(300)
             make.height.equalTo(250)
         }
+        
+        nextButton.snp.makeConstraints { make in
+            make.top.equalTo(selfIntroTextView.snp.bottom).offset(24)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(300)
+            make.height.equalTo(45)
+        }
     }
     
     private func setupViewModel() {
+        let input = ProfileSettingInput(profileImage: image.asDriverWithEmpty(),
+                                        nickName: displayNameTextField.rx.text.orEmpty.asDriverWithEmpty(),
+                                        introText: selfIntroTextView.rx.text.orEmpty.asDriverWithEmpty(),
+                                        nextButtonTapped: nextButton.rx.tap.asDriverWithEmpty())
         
+        let output = viewModel.bind(input: input)
+        
+        output.settingUpdate
+            .drive(onNext: { action in
+                if let action = action as? ProfileSettingViewAction {
+                    switch action {
+                    case .navigateToHome:
+                         // ホーム画面へ遷移
+                        print("navigate to home")
+                    case .showImageUploadError(let errMessage):
+                        SVProgressHUD.showError(withStatus: errMessage)
+                    case .showUserInfoUploadError(let errMessage):
+                        SVProgressHUD.showError(withStatus: errMessage)
+                    }
+                }
+            }).disposed(by: disposeBag)
+        
+        output.loading
+            .drive(onNext: { isLoading in
+                if isLoading {
+                    SVProgressHUD.show()
+                } else {
+                    SVProgressHUD.dismiss()
+                }
+            }).disposed(by: disposeBag)
     }
 }

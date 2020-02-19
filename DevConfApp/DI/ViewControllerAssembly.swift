@@ -14,12 +14,18 @@ class ViewControllerAssembly: Assembly {
         // MARK: AuthViewController
         
         container.register(AuthViewController.self) { r in
-            let viewModel = r.resolve(AuthViewModel.self)
-            let vc = AuthViewController(viewModel: viewModel!)
+            let vm = r.resolve(AuthViewModel.self)
+            let vc = AuthViewController(viewModel: vm!)
             return vc
         }
         
         // MARK: ProfileSettingViewController
+        
+        container.register(ProfileSettingViewController.self) { r in
+            let vm = r.resolve(ProfileSettingViewModelInterface.self)!
+            let vc = ProfileSettingViewController(viewModel: vm)
+            return vc
+        }
         
     }
 }

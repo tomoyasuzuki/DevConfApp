@@ -25,5 +25,6 @@ struct UserModel {
         self.tags = tags
         self.messages = messages
         self.chats = chats
+        self.introText = introText
     }
 }

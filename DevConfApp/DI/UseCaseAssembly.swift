@@ -15,5 +15,10 @@ class UseCaseAssembly: Assembly {
             let repository = r.resolve(AuthRepositoryInterface.self)!
             return AuthUseCase(repository: repository)
         }
+        
+        container.register(UserUseCase.self) { r in
+            let repository = r.resolve(UserRepositoryInterface.self)!
+            return UserUseCase(repository: repository)
+        }
     }
 }
